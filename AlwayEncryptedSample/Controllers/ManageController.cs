@@ -64,12 +64,14 @@ namespace AlwayEncryptedSample.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+            var user = await UserManager.FindByIdAsync(userId);
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
+                PhoneNumber = user.PhoneNumber,
+                TwoFactor = user.TwoFactorEnabled,
                 Logins = await UserManager.GetLoginsAsync(userId),
+                SSN = user.SSN,
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
             return View(model);
