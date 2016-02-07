@@ -1,5 +1,3 @@
-using System.Data;
-using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Resources;
@@ -11,6 +9,7 @@ namespace AlwayEncryptedSample.Controllers
     /// <summary>
     /// Internals for the DBA to see
     /// </summary>
+    [Authorize(Roles="DBAs")]
     public sealed class InternalsController : ControllerBase
     {
         private ResourceManager _rm = new ResourceManager("AlwayEncryptedSample.Properties.Resources", Assembly.GetExecutingAssembly());

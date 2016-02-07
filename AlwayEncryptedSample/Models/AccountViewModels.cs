@@ -50,7 +50,7 @@ namespace AlwayEncryptedSample.Models
     {
         [Required]
         [Display(Name = "Email")]
-        [EmailAddress]
+        // *Built in users don't use email address as user name.* [EmailAddress]
         public string Email { get; set; }
 
         [Required]

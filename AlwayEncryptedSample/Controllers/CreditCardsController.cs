@@ -4,6 +4,7 @@ using System.Web.Mvc;
 
 namespace AlwayEncryptedSample.Controllers
 {
+    [Authorize(Roles="Credit Card Admins")]
     public sealed class CreditCardsController : ControllerBase
     {
         public ActionResult Index()
