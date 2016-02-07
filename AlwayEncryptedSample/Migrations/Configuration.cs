@@ -1,3 +1,5 @@
+using AlwayEncryptedSample.Services;
+
 namespace AlwayEncryptedSample.Migrations
 {
     using System;
@@ -5,29 +7,29 @@ namespace AlwayEncryptedSample.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<AlwayEncryptedSample.Models.ApplicationDbContext>
+    internal sealed class AuthConfiguration : DbMigrationsConfiguration<AuthDbContext>
     {
-        public Configuration()
+        public AuthConfiguration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;
-            ContextKey = "AlwayEncryptedSample.Models.ApplicationDbContext";
+            ContextKey = "AlwayEncryptedSample.Models.AuthDbContext";
         }
 
-        protected override void Seed(AlwayEncryptedSample.Models.ApplicationDbContext context)
+        /// <remarks>This method will be called after migrating to the latest version.</remarks>
+        protected override void Seed(AuthDbContext context)
         {
-            //  This method will be called after migrating to the latest version.
+            
+        }
+    }
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+    internal sealed class AppConfiguration : DbMigrationsConfiguration<Services.ApplicationDbContext>
+    {
+        public AppConfiguration()
+        {
+            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationDataLossAllowed = true;
+            ContextKey = "AlwayEncryptedSample.Models.AuthDbContext";
         }
     }
 }
