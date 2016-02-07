@@ -1,18 +1,13 @@
 ﻿using System.IO;
 using System.Linq;
 using System.Web.Mvc;
-using System.Web.UI.WebControls;
-using AlwayEncryptedSample.Services;
 
 namespace AlwayEncryptedSample.Controllers
 {
-    public class CreditCardsController : Controller
+    public sealed class CreditCardsController : ControllerBase
     {
-        private readonly ApplicationDbContext _appContext = new ApplicationDbContext();
-
         public ActionResult Index()
         {
-
             return View(_appContext.CreditCards.ToList());
         }
 
