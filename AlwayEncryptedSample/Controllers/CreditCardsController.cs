@@ -20,7 +20,10 @@ namespace AlwayEncryptedSample.Controllers
         /// Import credit card data from a server side CSV
         /// </summary>
         /// <returns>Redirects to the Credit Card List</returns>
-        /// <remarks>Very optomistic parsing because we are importing a static file we can trust.</remarks>
+        /// <remarks>
+        /// Very optomistic parsing because we are importing a static file we can trust.
+        /// However, no bulk insert is happening.
+        /// </remarks>
         public ActionResult Import()
         {
             //TODO: This might be slow according to dead link here.
