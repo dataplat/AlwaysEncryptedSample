@@ -26,6 +26,7 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     @if(User.IsInRole("Credit Card Admins")){<li>@Html.ActionLink("Credit Cards", "Index", "CreditCards")</li>}
+                    @if(User.IsInRole("DBAs")){<li>@Html.ActionLink("DB Columns", "Index", "Internals")</li>}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
