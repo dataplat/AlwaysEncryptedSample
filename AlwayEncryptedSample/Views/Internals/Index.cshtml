@@ -33,7 +33,7 @@
     @foreach (var item in Model)
     {
         
-        <tr class="@(item.EncryptionType == "" ? String.Empty : "active")">
+        <tr class="@(item.EncryptionType == null ? String.Empty : "active")">
             <td>
                 @Html.DisplayFor(modelItem => item.FQTN)
             </td>
