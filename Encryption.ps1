@@ -6,11 +6,13 @@ param(
 	[string] $DacLocation = 'C:\Program Files (x86)\Microsoft SQL Server\130\DAC\bin\',
 	[string] $AuthSchema = 'Authentication',
 	[string] $AppSchema = 'Purchasing',
+	[string] $LoggingSchema = 'Logging',
 	[string] $MasterKeyDNSName = "CN=Always Encrypted Sample Cert",
 	[switch] $RemoveExistingCerts,
 	[string] $MasterKeySQLName = "AlwaysEncryptedSampleCMK",
-	[string] $AuthColumnKeyName = "AlwaysEncryptedAuthColumnKey",
-	[string] $AppColumnKeyName = "AlwaysEncryptedAppColumnKey"
+	[string] $AuthColumnKeyName = "AuthColumnsKey",
+	[string] $AppColumnKeyName = "AppColumnsKey",
+	[string] $LogColumnKeyName = "LogColumnsKey"
 )
 
 Function New-ColumnEncryptionKey {	
@@ -89,6 +91,7 @@ CREATE COLUMN MASTER KEY $($MasterKeySQLName)
 
 New-ColumnEncryptionKey -MasterKeyName $MasterKeySQLName -ColumnKeyName $AuthColumnKeyName
 New-ColumnEncryptionKey -MasterKeyName $MasterKeySQLName -ColumnKeyName $AppColumnKeyName
+New-ColumnEncryptionKey -MasterKeyName $MasterKeySQLName -ColumnKeyName $LogColumnKeyName
 
 #TODO: wrap below into Cmdlets up at the top.
 
@@ -106,4 +109,11 @@ $smoTable = $smoDatabase.Tables['CreditCards', $AppSchema]
 $encryptionChanges = New-Object 'Collections.Generic.List[Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo]'
 $encryptionChanges.Add($(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo' 'CardNumber', $(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionInfo' $AppColumnKeyName, ([Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionType]::Randomized), $AEAD_AES_256_CBC_HMAC_SHA_256)))
 $encryptionChanges.Add($(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo' 'CCV', $(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionInfo' $AppColumnKeyName, ([Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionType]::Deterministic), $AEAD_AES_256_CBC_HMAC_SHA_256)))
+[Microsoft.SqlServer.Management.AlwaysEncrypted.Management.AlwaysEncryptedManagement]::SetColumnEncryptionSchema($sqlConnectionString, $smoDatabase, $smoTable, $encryptionChanges)
+
+# Change table [Logging].[Log]
+$smoTable = $smoDatabase.Tables['Log', $LoggingSchema]
+$encryptionChanges = New-Object 'Collections.Generic.List[Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo]'
+$encryptionChanges.Add($(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo' 'User', $(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionInfo' $LogColumnKeyName, ([Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionType]::Deterministic), $AEAD_AES_256_CBC_HMAC_SHA_256)))
+$encryptionChanges.Add($(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.ColumnInfo' 'ClientIP', $(New-Object 'Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionInfo' $LogColumnKeyName, ([Microsoft.SqlServer.Management.AlwaysEncrypted.Types.EncryptionType]::Deterministic), $AEAD_AES_256_CBC_HMAC_SHA_256)))
 [Microsoft.SqlServer.Management.AlwaysEncrypted.Management.AlwaysEncryptedManagement]::SetColumnEncryptionSchema($sqlConnectionString, $smoDatabase, $smoTable, $encryptionChanges)

@@ -82,5 +82,29 @@ namespace AlwaysEncryptedSample.Properties {
                 return ResourceManager.GetString("EncryptedColumnsSQL", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IF OBJECT_ID(&apos;[Logging].[Log]&apos;) IS NULL
+        ///BEGIN
+        ///	CREATE TABLE [Logging].[Log] (
+        ///		[Id] [int] IDENTITY (1, 1) NOT NULL
+        ///			CONSTRAINT PK_Log PRIMARY KEY  CLUSTERED,
+        ///		[Date] [datetime] NOT NULL,
+        ///		[Thread] [varchar] (255) NOT NULL,
+        ///		[Level] [varchar] (50) NOT NULL,
+        ///		[Logger] [varchar] (255) NOT NULL,
+        ///		[User] [varchar] (50) NULL,
+        ///		[ClientIP] [varchar](45) NULL, -- Why 45? Because IPv6
+        ///		[Message] [varchar] (4000) NOT NULL,
+        ///		[Exception] [varchar] (2000) NULL
+        ///	);
+        ///
+        ///	CREATE INDEX IX_Logging_Log_D [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string Log4NetDDL {
+            get {
+                return ResourceManager.GetString("Log4NetDDL", resourceCulture);
+            }
+        }
     }
 }

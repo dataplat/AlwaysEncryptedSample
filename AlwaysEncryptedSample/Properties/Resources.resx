@@ -136,4 +136,23 @@
 	--WHERE encryption_type IS NOT NULL;
 	ORDER BY s.name, t.name, c.column_id;</value>
   </data>
+  <data name="Log4NetDDL" xml:space="preserve">
+    <value>IF OBJECT_ID('[Logging].[Log]') IS NULL
+BEGIN
+	CREATE TABLE [Logging].[Log] (
+		[Id] [int] IDENTITY (1, 1) NOT NULL
+			CONSTRAINT PK_Log PRIMARY KEY  CLUSTERED,
+		[Date] [datetime] NOT NULL,
+		[Thread] [varchar] (255) NOT NULL,
+		[Level] [varchar] (50) NOT NULL,
+		[Logger] [varchar] (255) NOT NULL,
+		[User] [varchar] (50) NULL,
+		[ClientIP] [varchar](45) NULL, -- Why 45? Because IPv6
+		[Message] [varchar] (4000) NOT NULL,
+		[Exception] [varchar] (2000) NULL
+	);
+
+	CREATE INDEX IX_Logging_Log_Date ON Logging.Log([Date]) INCLUDE (Message,Exception);
+END</value>
+  </data>
 </root>
