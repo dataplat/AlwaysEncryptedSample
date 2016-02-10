@@ -25,7 +25,6 @@ Function New-ColumnEncryptionKey {
 	$OutBytes = New-Object Byte[] 32
 	$RNG = New-Object System.Security.Cryptography.RNGCryptoServiceProvider
 	$RNG.GetBytes($InBytes,0,8)
-	[System.BitConverter]::ToString($InBytes)
 
 	$OutBytes = $cmkprov.EncryptColumnEncryptionKey($cmkPath, "RSA_OAEP", $InBytes)
 	$EncryptedValue = "0x" + [System.BitConverter]::ToString($OutBytes) -Replace '[-]',''
@@ -64,7 +63,7 @@ CREATE COLUMN ENCRYPTION KEY $($ColumnKeyName)
 $sqlConnectionString = "Server=$($Server);Integrated Security=SSPI;"
 $smoServerConnection = New-Object 'Microsoft.SqlServer.Management.Common.ServerConnection' ($Server)
 $smoServer = New-Object 'Microsoft.SqlServer.Management.Smo.Server' $smoServerConnection
-$smoDatabase = $smoServer.Databases['AlwayEncryptedSample']
+$smoDatabase = $smoServer.Databases['AlwaysEncryptedSample']
 
 if ($RemoveExistingCerts) {
 	Write-Debug "Removing All Existing Certificates Named $($MasterKeyDNSName)"
