@@ -7,13 +7,16 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Import Credit Cards", "Import")
-</p>
+@if (!Model.Any())
+{
+    <p>
+        @Html.ActionLink("Import Credit Cards", "Import")
+    </p>
+} 
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CardType)
+            @Html.DisplayNameFor(model => model.Network.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CardNumber)
@@ -36,7 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.CardType)
+            @Html.DisplayFor(modelItem => item.Network.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.CardNumber)
@@ -60,5 +63,4 @@
         </td>*@
     </tr>
 }
-
 </table>

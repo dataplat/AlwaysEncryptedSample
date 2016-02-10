@@ -184,6 +184,8 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ColumnInfo.cs" />
     <Compile Include="Models\CreditCard.cs" />
+    <Compile Include="Models\CreditCardNetwork.cs" />
+    <Compile Include="Models\CreditCardNetworks.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

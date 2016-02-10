@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
+using AlwayEncryptedSample.Models;
 
 namespace AlwayEncryptedSample.Controllers
 {
@@ -41,7 +43,8 @@ namespace AlwayEncryptedSample.Controllers
                     cc.ExpYear = short.Parse(fields[1]);
                     cc.ExpMonth = byte.Parse(fields[2]);
                     cc.CCV = short.Parse(fields[3]);
-                    cc.CardType = fields[4];
+                    cc.Network = _appContext.CreditCardNetworks.ToList().First
+                        (ccn => ccn.Id == (CreditCardNetworks) Enum.Parse(typeof(CreditCardNetworks), fields[4]));
                     _appContext.CreditCards.Add(cc);
                     line = rdr.ReadLine();
                 }

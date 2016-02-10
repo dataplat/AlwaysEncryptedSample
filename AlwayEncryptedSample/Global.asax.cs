@@ -3,7 +3,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using System.Web.Security;
+
 using AlwayEncryptedSample.Models;
 using AlwayEncryptedSample.Services;
 using Microsoft.AspNet.Identity;
@@ -55,7 +55,19 @@ namespace AlwayEncryptedSample
                     userManager.AddToRole("CCAdmin", "Credit Card Admins");
                 }
             }
-            (new ApplicationDbContext()).CreditCards.Find(-1);
+            using (var context = new ApplicationDbContext())
+            {
+                //TODO: Could possibly be sped up, but its O(n^2) where n = 4
+                foreach (var newCCN in CreditCardNetwork.GetNetworks())
+                {
+                    if (!context.CreditCardNetworks.Any(ccn => ccn.Id == newCCN.Id))
+                    {
+                        context.CreditCardNetworks.Add(newCCN);
+                    }
+                }
+                context.SaveChanges();
+            }
+            
         }
     }
 }

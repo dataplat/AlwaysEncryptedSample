@@ -1,5 +1,7 @@
 using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AlwayEncryptedSample.Models
 {
@@ -13,10 +15,10 @@ namespace AlwayEncryptedSample.Models
         [Key]
         public int CreditCardId { get; set; }
         [Required]
-        [MaxLength(50)]
-        public string CardType { get; set; }
+        public virtual CreditCardNetwork Network { get; set; }
         [Required]
         [MaxLength(25)]
+        [Column(TypeName = "VARCHAR")]
         public string CardNumber { get; set; }
         [Required]
         public byte ExpMonth { get; set; }

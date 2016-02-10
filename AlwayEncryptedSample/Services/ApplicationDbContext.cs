@@ -3,10 +3,8 @@ using AlwayEncryptedSample.Properties;
 
 namespace AlwayEncryptedSample.Services
 {
-    using System;
     using System.Data.Entity;
-    using System.Linq;
-
+ 
     public class ApplicationDbContext : DbContext
     {
         /// <remarks>Use DefaultConnection so we use one connection string for this and the ASP.NET authnetication.</remarks>
@@ -26,7 +24,6 @@ namespace AlwayEncryptedSample.Services
         // on configuring and using a Code First model, see http://go.microsoft.com/fwlink/?LinkId=390109.
 
         public virtual DbSet<CreditCard> CreditCards { get; set; }
-
-        public System.Data.Entity.DbSet<AlwayEncryptedSample.Models.ColumnInfo> ColumnInfoes { get; set; }
+        public virtual DbSet<CreditCardNetwork> CreditCardNetworks { get; set; }
     }
 }
