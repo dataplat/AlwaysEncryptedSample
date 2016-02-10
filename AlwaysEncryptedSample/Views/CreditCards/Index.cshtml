@@ -37,7 +37,7 @@
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
+    <tr id="cc-@item.CreditCardId">
         <td>
             @Html.DisplayFor(modelItem => item.Network.Name)
         </td>
@@ -56,11 +56,22 @@
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedDate)
         </td>
-        @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CreditCardId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CreditCardId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CreditCardId })
-        </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.CreditCardId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CreditCardId }) |*@
+            @Ajax.ActionLink("Delete", "Delete", new { id = item.CreditCardId }, new AjaxOptions
+            {
+                HttpMethod = "DELETE",
+                OnSuccess = "DeleteSuccess('cc-" + item.CreditCardId + "')"
+            })
+        </td>
     </tr>
 }
 </table>
+<script type="text/javascript">
+    function DeleteSuccess(rowId) {
+        $('#' + rowId)
+            .animate({ 'line-height': 0 }, 1000)
+            .hide(1);
+    }
+</script>

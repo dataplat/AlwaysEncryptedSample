@@ -6,14 +6,12 @@ using AlwaysEncryptedSample.Models;
 
 namespace AlwaysEncryptedSample.Controllers
 {
+    /// <summary>
+    /// CRUD Operations for the credit card table.
+    /// </summary>
     [Authorize(Roles="Credit Card Admins")]
     public sealed class CreditCardsController : ControllerBase
     {
-        public ActionResult Index()
-        {
-            return View(_appContext.CreditCards.ToList());
-        }
-
         /// <summary>
         /// Import credit card data from a server side CSV
         /// </summary>
@@ -52,5 +50,24 @@ namespace AlwaysEncryptedSample.Controllers
             }
             return RedirectToAction("Index");
         }
+
+        public ActionResult Index()
+        {
+            return View(_appContext.CreditCards.ToList());
+        }
+
+        [HttpDelete]
+        public ActionResult Delete(int id)
+        {
+            var cc = _appContext.CreditCards.Find(id);
+            if (cc == null)
+            {
+                return new HttpStatusCodeResult(System.Net.HttpStatusCode.NotFound);
+            }
+            _appContext.CreditCards.Remove(cc);
+            _appContext.SaveChanges();
+            return new HttpStatusCodeResult(System.Net.HttpStatusCode.OK);
+        }
+
     }
 }
