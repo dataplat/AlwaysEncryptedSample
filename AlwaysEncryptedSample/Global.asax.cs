@@ -10,7 +10,6 @@ using System.Web.Routing;
 
 using AlwaysEncryptedSample.Models;
 using AlwaysEncryptedSample.Services;
-using log4net.Appender;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using ApplicationDbContext = AlwaysEncryptedSample.Services.ApplicationDbContext;
@@ -19,7 +18,7 @@ namespace AlwaysEncryptedSample
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        private void initLog4NetDb(SqlConnection cn)
+        private void InitLog4NetDb(SqlConnection cn)
         {
             //TODO: Make the database if it doesn't exist.
             var rm = new ResourceManager
@@ -27,8 +26,14 @@ namespace AlwaysEncryptedSample
             var sql = rm.GetString("Log4NetDDL");
             using (var cmd = cn.CreateCommand())
             {
+                /*
+                 * EF Code first does a good job of autocreating the database if it doesn't
+                 * exist. However, since we want log4net to log EF activity to the database
+                 * we have a chicken or egg problem.
+                 */
                 var builder = new SqlConnectionStringBuilder(cn.ConnectionString);
                 var dbName = builder.InitialCatalog;
+                // Can't connect to a db that doesn't already exist. 
                 builder.InitialCatalog = "tempdb";
                 cn.ConnectionString = builder.ConnectionString;
                 cn.Open();
@@ -43,6 +48,10 @@ namespace AlwaysEncryptedSample
                 builder.InitialCatalog = dbName;
                 cn.ConnectionString = builder.ConnectionString;
                 cn.Open();
+                /*
+                 * ADO.NET doesn't parse batches (read support the GO statement).
+                 * Because CREATE SCHEMA is extra picky we need this.
+                 */
                 cmd.CommandText = "SELECT COUNT(*) FROM sys.schemas WHERE name = 'Logging';";
                 if ((int) cmd.ExecuteScalar() == 0)
                 {
@@ -58,7 +67,7 @@ namespace AlwaysEncryptedSample
         {
             using (var cn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
-                initLog4NetDb(cn);
+                InitLog4NetDb(cn);
             }
             
             var log = log4net.LogManager.GetLogger(GetType());
@@ -74,21 +83,21 @@ namespace AlwaysEncryptedSample
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             log.Debug("Registering Bundles");
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            // Force creation of the database at startup.
+            // Force creation of auth schema.
             using (var authDbCtx = AuthDbContext.Create())
             {
                 authDbCtx.Database.Log = (dbLog => log.Debug(dbLog));
                 log.Info("Initialization tests for Autorization Schema");
                 if (!authDbCtx.Roles.Any())
                 {
-                    log.Info("No users found in database. Creating users");
+                    log.Info("No roles found in database. Creating roles");
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(authDbCtx));
-                    roleManager.Create(new IdentityRole("DBAs"));
-                    roleManager.Create(new IdentityRole("Credit Card Admins"));
+                    roleManager.Create(new IdentityRole("DBAs")); // Gives database internals access
+                    roleManager.Create(new IdentityRole("Credit Card Admins")); // Gives access to CC info
                 }
                 if (!authDbCtx.Users.Any())
                 {
-                    log.Info("No roles found in database. Creating roles");
+                    log.Info("No users found in database. Creating users");
                     var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(authDbCtx));
                     userManager.Create(new ApplicationUser
                     {
@@ -112,6 +121,7 @@ namespace AlwaysEncryptedSample
                     userManager.AddToRole("CCAdmin", "Credit Card Admins");
                 }
             }
+            // Force creation of app schema.
             using (var context = new ApplicationDbContext())
             {
                 context.Database.Log = (dbLog => log.Debug(dbLog));
