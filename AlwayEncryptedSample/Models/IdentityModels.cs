@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -18,6 +19,7 @@ namespace AlwayEncryptedSample.Models
         }
 
         [MaxLength(11)]
+        [Column(TypeName = "CHAR")]
         public string SSN { get; set; }
     }
 }
