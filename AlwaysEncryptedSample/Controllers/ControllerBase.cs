@@ -11,8 +11,9 @@ namespace AlwaysEncryptedSample.Controllers
 
         protected ControllerBase()
         {
-            _log = log4net.LogManager.GetLogger(GetType());
+            _log = LogManager.GetLogger(GetType());
             _appContext.Database.Log = (dbLog => _log.Debug(dbLog));
+            _log.DebugFormat("Initializing {0}", GetType().FullName);
         }
     }
 }

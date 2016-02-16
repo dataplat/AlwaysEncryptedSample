@@ -62,20 +62,21 @@ namespace AlwaysEncryptedSample.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to SELECT
-        ///		QUOTENAME(DB_NAME()) + &apos;.&apos; + QUOTENAME(s.name) + &apos;.&apos; + QUOTENAME(t.name) AS FQTN,
+        ///		QUOTENAME(DB_NAME()) + &apos;.&apos; + QUOTENAME(s.name) + &apos;.&apos; +
+        ///		QUOTENAME(t.name) AS FQTN,
         ///		s.name AS [Schema],
         ///		t.name AS [Table],
         ///		c.name AS ColumnName,
         ///		ct.name AS ColumnType,
         ///		c.max_length AS Length,
+        ///		c.collation_name AS Collation,
         ///		c.is_nullable AS Nullable,
         ///		c.encryption_type_desc as EncryptionType,
         ///		c.generated_always_type_desc AS GeneratedAlways
         ///	FROM 
         ///		sys.columns c
         ///		INNER JOIN sys.types ct ON c.system_type_id = ct.system_type_id
-        ///		INNER JOIN sys.tables t ON c.object_id = t.object_id
-        ///		INNER JOIN  sys.sche [rest of string was truncated]&quot;;.
+        ///		INNER JOIN sys.tables t ON c.object_id  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string EncryptedColumnsSQL {
             get {
@@ -93,13 +94,12 @@ namespace AlwaysEncryptedSample.Properties {
         ///		[Thread] [varchar] (255) NOT NULL,
         ///		[Level] [varchar] (50) NOT NULL,
         ///		[Logger] [varchar] (255) NOT NULL,
-        ///		[User] [varchar] (50) NULL,
-        ///		[ClientIP] [varchar](45) NULL, -- Why 45? Because IPv6
+        ///		[User] [nvarchar] (50) NULL,
+        ///		[ClientIP] [nvarchar](45) NULL, -- Why 45? Because IPv6 Why Nvarchar? Because Log4Net
         ///		[Message] [varchar] (4000) NOT NULL,
         ///		[Exception] [varchar] (2000) NULL
         ///	);
-        ///
-        ///	CREATE INDEX IX_Logging_Log_D [rest of string was truncated]&quot;;.
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Log4NetDDL {
             get {

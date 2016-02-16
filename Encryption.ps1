@@ -72,6 +72,7 @@ catch {
 	Write-Error $_
 	break
 }
+
 if ($RemoveExistingCerts) {
 	Write-Debug "Removing All Existing Certificates Named $($MasterKeyDNSName)"
 	ls Cert:\CurrentUser\My |  where subject -eq $MasterKeyDNSName | rm
