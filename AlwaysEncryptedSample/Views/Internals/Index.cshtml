@@ -22,6 +22,9 @@
             @Html.DisplayNameFor(model => model.Nullable)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Collation)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.EncryptionType)
         </th>
         <th>
@@ -45,6 +48,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nullable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Collation)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EncryptionType)

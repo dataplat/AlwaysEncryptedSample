@@ -16,6 +16,7 @@ namespace AlwaysEncryptedSample.Models
         public string ColumnType { get; set; }
         /// <summary>Length of the column</summary>
         public short Length { get; set; }
+        public string Collation { get; set; }
         public bool Nullable { get; set; }
         public string EncryptionType { get; set; }
         public string GeneratedAlways { get; set; }
