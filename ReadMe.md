@@ -9,8 +9,8 @@ to be a general purposes best practice web application.
 Running
 -------
 
-This application should compile in Visual Studio 2015 out of the box for
-Visual Studio 2013. the [Microsoft .NET Framework 4.6 Targeting
+This application should compile in Visual Studio 2015 out of the box. To 
+compile it with Visual Studio 2013. the [Microsoft .NET Framework 4.6 Targeting
 Pack](https://www.microsoft.com/en-us/download/details.aspx?id=48136) is
 required. ADO.NET support for Always Encrypted is only present in .NET 4.6
 
@@ -55,4 +55,4 @@ with the password of `P@ul!`. The user administrator has access to an
 "Internals" page that lists the columns in the database, as well as the
 encryption information for them. The CCadmin user has a page that will let
 them import 1000 randomly generated fake credit cards, and then display them
-in a table. The app also suppors self registration. 
+in a table. The app also suppors self registration.
