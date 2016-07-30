@@ -57,12 +57,6 @@ if ($RemoveExistingCerts) {
 	ls Cert:\CurrentUser\My |  where subject -eq $MasterKeyDNSName | rm
 }
 
-<#
-TODO: Consider this from https://msdn.microsoft.com/en-us/library/mt732057.aspx:
-$cert1 = New-SelfSignedCertificate -Subject "AlwaysEncryptedCert" -CertStoreLocation Cert:CurrentUserMy -KeyExportPolicy Exportable -Type DocumentEncryptionCert -KeyUsage DataEncipherment -KeySpec KeyExchange
-
-#>
-
 $cert = New-SelfSignedCertificate `
 	-Subject $MasterKeyDNSName `
 	-CertStoreLocation Cert:\CurrentUser\My `
