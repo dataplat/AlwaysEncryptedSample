@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+    db:
+        image: microsoft/mssql-server-linux
+        ports:
+            - "11433:1433"
+        environment:
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=a1waysB3Encrypting
+        volumes:
+            - ./volumes/mssql:/var/opt/mssql
