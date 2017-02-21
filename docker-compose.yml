@@ -2,7 +2,7 @@ version: '3'
 
 services:
     db:
-        image: microsoft/mssql-server-linux
+        build: ./provision/sqlserver
         ports:
             - "11433:1433"
         environment:
