@@ -105,7 +105,7 @@ namespace AlwaysEncryptedSample
                         Email = "no-reply+admin@microsoft.com",
                         UserName = "Administrator",
                         EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("P3ter!"),
+                        PasswordHash = userManager.PasswordHasher.HashPassword("P3ter!"), //TODO: Change this to Rock
                     });
 
                     userManager.AddToRole("Administrator", "DBAs");
@@ -116,7 +116,7 @@ namespace AlwaysEncryptedSample
                         Id = "CCAdmin",
                         UserName = "CCAdmin",
                         EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("P@ul!")
+                        PasswordHash = userManager.PasswordHasher.HashPassword("P@ul!"), //TODO: Change this to Atridies
                     });
                     userManager.AddToRole("CCAdmin", "Credit Card Admins");
                 }
@@ -124,6 +124,7 @@ namespace AlwaysEncryptedSample
             // Force creation of app schema.
             using (var context = new ApplicationDbContext())
             {
+                // TODO: Perhaps rethink doing this.
                 context.Database.Log = (dbLog => log.Debug(dbLog));
                 log.Info("Initialization tests for Application Schema");
                 //TODO: Could probably be sped up, but its O(n^2) where n = 4
