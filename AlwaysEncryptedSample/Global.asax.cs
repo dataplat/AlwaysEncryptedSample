@@ -105,7 +105,8 @@ namespace AlwaysEncryptedSample
                         Email = "no-reply+admin@microsoft.com",
                         UserName = "Administrator",
                         EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("P3ter!"),
+                        //PasswordHash = userManager.PasswordHasher.HashPassword("P3ter!"),
+                        PasswordHash = userManager.PasswordHasher.HashPassword("Alm0nds!"),
                     });
 
                     userManager.AddToRole("Administrator", "DBAs");
@@ -116,7 +117,8 @@ namespace AlwaysEncryptedSample
                         Id = "CCAdmin",
                         UserName = "CCAdmin",
                         EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("P@ul!")
+                        --PasswordHash = userManager.PasswordHasher.HashPassword("P@ul!")
+                        PasswordHash = userManager.PasswordHasher.HashPassword("Appl3s")
                     });
                     userManager.AddToRole("CCAdmin", "Credit Card Admins");
                 }
