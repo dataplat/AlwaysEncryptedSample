@@ -1,0 +1,34 @@
+{
+    "name": "sqlcollaborative/alwaysencryptedsample",
+    "description": "Always Encrypted Sample PHP Application",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justin Dearing",
+            "email": "zippy1981@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^v2.5.6",
+        "monolog/monolog": "^1.22.1",
+        "symfony/config": "dev-master",
+        "symfony/dependency-injection": "dev-master",
+        "symfony/yaml": "dev-master"
+
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "SqlCollaborative\\AlwaysEncryptedSample\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SqlCollaborative\\AlwaysEncryptedSample\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev"
+}

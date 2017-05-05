@@ -1,0 +1,13 @@
+paramaters:
+  log.stderr.level: NOTICE
+  log.db.level: DEBUG
+  log.db.dsn: Driver={ODBC Driver 13 for SQL Server};Server=.;Trusted_Connection=yes;ColumnEncryption=Enabled;APP=AlwaysEncrytedSample PHP
+services:
+  logger_stream_stderr:
+    class: Monolog\Handler\StreamHandler
+    arguments:
+     - php://stderr
+     - %log.stderr.level%
+   logger_stream_odbc:
+    class:
+
