@@ -3,14 +3,15 @@ declare(strict_types = 1);
 
 namespace SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler;
 
-use Monolog\TestCase;
+use Monolog\Logger;
 use PDO;
+use PHPUnit_Framework_TestCase;
 
-class SqlServerHandlerTest extends \PHPUnit_Framework_TestCase
+class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
 {
     private $dsn =
-        'odbc:Driver={ODBC Driver 13 for SQL Server};Server=.;' .
-        'Trusted_Connection=yes;ColumnEncryption=Enabled;APP=AlwaysEncrytedSample PHP';
+        'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=AlwaysEncryptedSample;' .
+        'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
     /**
      * @var PDO
      */
@@ -48,8 +49,8 @@ class SqlServerHandlerTest extends \PHPUnit_Framework_TestCase
         $this->handler->handle($record);
         $sql = "SELECT COUNT(*) FROM Logging.Log WHERE [Date] = @date AND message = @message";
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindParam('@date', $record['datetime']);
-        $stmt->bindParam('@message', $record['message']);
+        $stmt->bindValue('@date', $record['datetime']->format(DATE_ATOM));
+        $stmt->bindValue('@message', $record['message']);
 
         $stmt->execute();
         $this->assertEquals('1', $stmt->fetchColumn());

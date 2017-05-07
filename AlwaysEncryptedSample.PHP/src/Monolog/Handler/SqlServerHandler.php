@@ -16,6 +16,10 @@ class SqlServerHandler extends AbstractProcessingHandler
      * @var PDO $connection
      */
     private $connection;
+    /**
+     * @var int $pdoErrorMode the error mode of the connection and statement objects.
+     */
+    private $pdoErrorMode;
 
     private $sqlInsert;
     /**
@@ -38,14 +42,32 @@ class SqlServerHandler extends AbstractProcessingHandler
             throw new \RuntimeException("Error connecting to DSN $dsn", 0, $ex);
         }
 
-        $this->setSqlInsert(<<< EOSQL
+        $this
+            ->setPdoErrorMode(PDO::ERRMODE_EXCEPTION)
+            ->setSqlInsert(<<< EOSQL
 INSERT INTO Logging.Log
   ([Date],[Level],[Message] /*, [User], [ClientIP]*/)
-  VALUES (@datetime, @level_name, @message /*, @user, @client_ip */);
+  VALUES (:datetime, :level_name, :message /*, @user, @client_ip */);
 EOSQL
-        );
+            );
         parent::__construct($level, $bubble);
+    }
 
+    public function setPdoAttribute(int $attribute, $value) : self
+    {
+        $this->connection->setAttribute($attribute, $value);
+        return $this;
+    }
+
+    /**
+     * Sets the attribute error mode
+     * @param int $errorMode
+     * @return SqlServerHandler
+     */
+    public function setPdoErrorMode(int $errorMode = PDO::ERRMODE_EXCEPTION) : self
+    {
+        $this->pdoErrorMode = $errorMode;
+        return $this->setPdoAttribute(PDO::ATTR_ERRMODE, $errorMode);
     }
 
     /**
@@ -55,8 +77,9 @@ EOSQL
     public function setSqlInsert($sqlInsert) : self
     {
         $this->sqlInsert = $sqlInsert;
-        $this->statement =
-            $this->connection->prepare($this->sqlInsert);
+        $this->statement = $this->connection->prepare($this->sqlInsert);
+        //TODO: this isn't working ask on Stackoverflow or read the source to figure out why.
+        $this->statement->setAttribute(PDO::ATTR_ERRMODE, $this->pdoErrorMode);
 
         return $this;
     }
@@ -69,11 +92,12 @@ EOSQL
      */
     protected function write(array $record)
     {
-        $this->statement->execute(array_merge(
-            [
-                //TODO: put user name and client ip here
-            ],
-            $record
-        ));
+        //TODO: SQL server chokes on DATE_ATOM because of the timezone offset
+        //TODO: I need to make thread not null.
+        $this->statement->execute([
+            ':datetime' => $record['datetime']->format(DATE_ATOM),
+            ':level_name' => $record['level_name'],
+            ':message' => $record['message'],
+        ]);
     }
 }
