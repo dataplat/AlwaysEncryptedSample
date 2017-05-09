@@ -17,6 +17,10 @@ class SqlServerHandler extends AbstractProcessingHandler
      */
     private $connection;
     /**
+     * @var string $logger Name of the Logger to record in the Logger column.
+     */
+    protected $logger;
+    /**
      * @var int $pdoErrorMode the error mode of the connection and statement objects.
      */
     private $pdoErrorMode;
@@ -33,8 +37,14 @@ class SqlServerHandler extends AbstractProcessingHandler
      * @param string $dsn The DSN to connect to.
      * @param bool|int $level
      * @param bool $bubble
+     * @param null $loggerName name of the logger
      */
-    public function __construct($dsn, $level = Logger::DEBUG, $bubble = true) {
+    public function __construct(
+        $dsn,
+        $level = Logger::DEBUG,
+        $bubble = true,
+        $loggerName = null
+    ) {
         try {
             $this->connection = new PDO($dsn);
         }
@@ -43,14 +53,22 @@ class SqlServerHandler extends AbstractProcessingHandler
         }
 
         $this
+            ->setLoggerName($loggerName ?? 'Monolog')
             ->setPdoErrorMode(PDO::ERRMODE_EXCEPTION)
             ->setSqlInsert(<<< EOSQL
+DECLARE @timestamp VARCHAR(35) = :datetime;
 INSERT INTO Logging.Log
-  ([Date],[Level],[Message] /*, [User], [ClientIP]*/)
-  VALUES (:datetime, :level_name, :message /*, @user, @client_ip */);
+  ([Date],[Level],[Message], [Logger] /*, [User], [ClientIP]*/)
+  VALUES (@timestamp, :level_name, :message, :logger /*, @user, @client_ip */);
 EOSQL
             );
         parent::__construct($level, $bubble);
+    }
+
+    public function setLoggerName(string $logger) : self
+    {
+        $this->logger = $logger;
+        return $this;
     }
 
     public function setPdoAttribute(int $attribute, $value) : self
@@ -94,10 +112,17 @@ EOSQL
     {
         //TODO: SQL server chokes on DATE_ATOM because of the timezone offset
         //TODO: I need to make thread not null.
-        $this->statement->execute([
-            ':datetime' => $record['datetime']->format(DATE_ATOM),
-            ':level_name' => $record['level_name'],
-            ':message' => $record['message'],
-        ]);
+        try {
+            $this->statement->execute([
+                ':datetime' => $record['datetime']->format(DATE_ATOM),
+                ':level_name' => $record['level_name'],
+                ':message' => $record['message'],
+                ':logger' => $this->logger,
+            ]);
+        } catch (PDOException $e) {
+            echo sprintf("Date: \"%s\"", $record['datetime']->format(DATE_ATOM));
+            //$this->statement->debugDumpParams();
+            throw $e;
+        }
     }
 }

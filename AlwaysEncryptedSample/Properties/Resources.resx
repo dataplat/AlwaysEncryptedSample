@@ -144,8 +144,9 @@ BEGIN
 	CREATE TABLE [Logging].[Log] (
 		[Id] [int] IDENTITY (1, 1) NOT NULL
 			CONSTRAINT PK_Log PRIMARY KEY  CLUSTERED,
-		[Date] [datetime] NOT NULL,
-		[Thread] [varchar] (255) NOT NULL,
+		[Date] [datetimeoffset] NOT NULL
+			CONSTRAINT DF_Log_Date DEFAULT GETDATE(),
+		[ThreadId] [int] NULL,
 		[Level] [varchar] (50) NOT NULL,
 		[Logger] [varchar] (255) NOT NULL,
 		[User] [nvarchar] (50) NULL,

@@ -1,0 +1,12 @@
+USE master;
+GO
+
+ALTER DATABASE AlwaysEncryptedSample 
+	SET OFFLINE WITH ROLLBACK IMMEDIATE;
+GO
+
+ALTER DATABASE AlwaysEncryptedSample SET ONLINE;
+GO
+
+DROP DATABASE AlwaysEncryptedSample;
+GO 

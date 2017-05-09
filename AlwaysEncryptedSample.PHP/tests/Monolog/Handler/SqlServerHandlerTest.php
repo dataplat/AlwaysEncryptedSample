@@ -25,6 +25,7 @@ class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
     {
         $this->handler = new SqlServerHandler($this->dsn);
         $this->connection = new PDO($this->dsn);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     /**
@@ -47,10 +48,15 @@ class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
     {
         $record = $this->getRecord();
         $this->handler->handle($record);
-        $sql = "SELECT COUNT(*) FROM Logging.Log WHERE [Date] = @date AND message = @message";
+        $sql = <<<EOSQL
+DECLARE @timestamp VARCHAR(35) = :datetime; 
+SELECT COUNT(*) FROM Logging.Log WHERE [Date] = @timestamp AND message = :message;
+EOSQL;
+
         $stmt = $this->connection->prepare($sql);
-        $stmt->bindValue('@date', $record['datetime']->format(DATE_ATOM));
-        $stmt->bindValue('@message', $record['message']);
+        $stmt->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt->bindValue(':datetime', $record['datetime']->format(DATE_ATOM));
+        $stmt->bindValue(':message', $record['message']);
 
         $stmt->execute();
         $this->assertEquals('1', $stmt->fetchColumn());

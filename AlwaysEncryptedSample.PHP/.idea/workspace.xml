@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8581f3-0d04-4a92-9048-d4f685a8cba2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../.idea/.idea.AlwaysEncryptedSample/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata.keystream" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata.keystream.len" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata.len" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata_i" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991/_metadata_/metadata_i.len" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AlwaysEncryptedSample.PHP.iml" afterPath="$PROJECT_DIR$/.idea/AlwaysEncryptedSample.PHP.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/php.xml" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/dataSources/a5d883c6-045e-47e6-9485-383386279991.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../Drop Database.sql" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php" afterPath="$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" afterPath="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
@@ -42,34 +46,57 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="SQL Server (Microsoft) - AlwaysEncrypted@localhost" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="AlwaysEncryptedSample" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="SqlServerHandlerTest.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SqlServerHandlerTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="106" lean-forward="false" selection-start-line="12" selection-start-column="106" selection-end-line="12" selection-end-column="106" />
+            <state relative-caret-position="63">
+              <caret line="52" column="81" lean-forward="false" selection-start-line="52" selection-start-column="81" selection-end-line="52" selection-end-column="81" />
               <folding>
                 <element signature="e#101#120#0#PHP" expanded="true" />
-                <marker date="1494192808761" expanded="true" signature="1385:1461" ph="SELECT COUNT... Log" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SqlServerHandler.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SqlServerHandler.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="95" column="47" lean-forward="false" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+            <state relative-caret-position="102">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#101#118#0#PHP" expanded="true" />
-                <marker date="1494193273999" expanded="true" signature="1151:1297" ph="INSERT INTO Logging.Log... " />
-                <marker date="1494193273999" expanded="true" signature="1203:1227" ph="/*, [User], " />
-                <marker date="1494193273999" expanded="true" signature="1272:1296" ph="/*, @user, @... " />
+                <marker date="1494330289323" expanded="true" signature="1474:1640" ph="INSERT INTO Logging.Log... " />
+                <marker date="1494330289323" expanded="true" signature="1536:1560" ph="/*, [User], " />
+                <marker date="1494330289323" expanded="true" signature="1615:1639" ph="/*, @user, @... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PDO.php" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="157">
+              <caret line="1374" column="0" lean-forward="false" selection-start-line="1374" selection-start-column="0" selection-end-line="1374" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -77,8 +104,8 @@
       <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -101,9 +128,9 @@
         <option value="$PROJECT_DIR$/vendor/monolog/monolog/tests/Monolog/TestCase.php" />
         <option value="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
         <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql" />
         <option value="$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php" />
+        <option value="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
       </list>
     </option>
   </component>
@@ -384,56 +411,56 @@
       <updated>1493944125367</updated>
       <workItem from="1493944130090" duration="9015000" />
       <workItem from="1494023090546" duration="1038000" />
-      <workItem from="1494117243973" duration="12061000" />
+      <workItem from="1494117243973" duration="19357000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 07m 57s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 38m 10s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 23m 39s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 40m 06s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 25m 10s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 41m 58s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 25m 47s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 43m 06s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 28m 10s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 44m 53s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 28m 36s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 49m 45s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 29m 06s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 50m 33s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 29m 38s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 54m 52s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 33m 16s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 55m 14s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
-    <history-entry file="PHPUNit - 2017.05.07 at 17h 33m 34s.xml">
+    <history-entry file="PHPUNit - 2017.05.09 at 07h 55m 42s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22114000" />
+    <option name="totallyTimeSpent" value="29410000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4371069" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4371069" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17715959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4633968" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15446559" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32861635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49842766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.49842766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -455,14 +482,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php</url>
-          <line>96</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="8" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PHPUnitRunConfigurationType">
@@ -505,9 +525,9 @@
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494193273999" expanded="true" signature="1151:1297" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494193273999" expanded="true" signature="1203:1227" ph="/*, [User], " />
-            <marker date="1494193273999" expanded="true" signature="1272:1296" ph="/*, @user, @... " />
+            <marker date="1494330289323" expanded="true" signature="1474:1640" ph="INSERT INTO Logging.Log... " />
+            <marker date="1494330289323" expanded="true" signature="1536:1560" ph="/*, [User], " />
+            <marker date="1494330289323" expanded="true" signature="1615:1639" ph="/*, @user, @... " />
           </folding>
         </state>
       </provider>
@@ -518,7 +538,6 @@
           <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
           <folding>
             <element signature="e#101#120#0#PHP" expanded="true" />
-            <marker date="1494192808761" expanded="true" signature="1385:1461" ph="SELECT COUNT... Log" />
           </folding>
         </state>
       </provider>
@@ -587,7 +606,6 @@
           <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
           <folding>
             <element signature="e#101#120#0#PHP" expanded="true" />
-            <marker date="1494192808761" expanded="true" signature="1385:1461" ph="SELECT COUNT... Log" />
           </folding>
         </state>
       </provider>
@@ -632,9 +650,9 @@
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
           <folding>
             <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494193273999" expanded="true" signature="1151:1297" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494193273999" expanded="true" signature="1203:1227" ph="/*, [User], " />
-            <marker date="1494193273999" expanded="true" signature="1272:1296" ph="/*, @user, @... " />
+            <marker date="1494330289323" expanded="true" signature="1474:1640" ph="INSERT INTO Logging.Log... " />
+            <marker date="1494330289323" expanded="true" signature="1536:1560" ph="/*, [User], " />
+            <marker date="1494330289323" expanded="true" signature="1615:1639" ph="/*, @user, @... " />
           </folding>
         </state>
       </provider>
@@ -716,16 +734,8 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1494192812674" expanded="true" signature="5191:5218" ph="..." />
+            <marker date="1494330941214" expanded="true" signature="5191:5218" ph="..." />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="1215" column="20" lean-forward="false" selection-start-line="1215" selection-start-column="20" selection-end-line="1215" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -745,34 +755,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
+        <state relative-caret-position="17">
+          <caret line="341" column="0" lean-forward="false" selection-start-line="341" selection-start-column="0" selection-end-line="341" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="106" lean-forward="false" selection-start-line="12" selection-start-column="106" selection-end-line="12" selection-end-column="106" />
-          <folding>
-            <element signature="e#101#120#0#PHP" expanded="true" />
-            <marker date="1494192808761" expanded="true" signature="1385:1461" ph="SELECT COUNT... Log" />
-          </folding>
+        <state relative-caret-position="157">
+          <caret line="1374" column="0" lean-forward="false" selection-start-line="1374" selection-start-column="0" selection-end-line="1374" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="95" column="47" lean-forward="false" selection-start-line="95" selection-start-column="47" selection-end-line="95" selection-end-column="47" />
+        <state relative-caret-position="102">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding>
             <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494193273999" expanded="true" signature="1151:1297" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494193273999" expanded="true" signature="1203:1227" ph="/*, [User], " />
-            <marker date="1494193273999" expanded="true" signature="1272:1296" ph="/*, @user, @... " />
+            <marker date="1494330289323" expanded="true" signature="1474:1640" ph="INSERT INTO Logging.Log... " />
+            <marker date="1494330289323" expanded="true" signature="1536:1560" ph="/*, [User], " />
+            <marker date="1494330289323" expanded="true" signature="1615:1639" ph="/*, @user, @... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="52" column="81" lean-forward="false" selection-start-line="52" selection-start-column="81" selection-end-line="52" selection-end-column="81" />
+          <folding>
+            <element signature="e#101#120#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
