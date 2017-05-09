@@ -5,6 +5,7 @@ namespace SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler;
 
 use Monolog\Logger;
 use PDO;
+use PDOException;
 use PHPUnit_Framework_TestCase;
 
 class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
@@ -42,6 +43,39 @@ class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
             'datetime' => \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true))),
             'extra' => array(),
         );
+    }
+
+
+    /**
+     * @expectedException PDOException
+     * @expectedExceptionMessage could not find driver
+     */
+    public function testBogusDsn()
+    {
+        $badDsn = 'zippydb:name=Not The Greatest Db;Other=Just a Tribute;';
+        $handler = new SqlServerHandler($badDsn);
+    }
+
+    /**
+     * @expectedException PDOException
+     * @expectedExceptionMessage SQLSTATE[08001] SQLDriverConnect: 10061 [Microsoft][ODBC Driver 13 for SQL Server]TCP Provider: No connection could be made because the target machine actively refused it.
+     */
+    public function testBadSqlServerPort()
+    {
+        $badDsn = 'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,9999;Database=AlwaysEncryptedSample;' .
+            'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
+        $handler = new SqlServerHandler($badDsn);
+    }
+
+    /**
+     * @expectedException PDOException
+     * @expectedExceptionMessage SQLSTATE[28000] SQLDriverConnect: 18456 [Microsoft][ODBC Driver 13 for SQL Server][SQL Server]Login failed for user 'sa'
+     */
+    public function testBadDb()
+    {
+        $badDsn = 'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=Not A Real Db;' .
+            'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
+        $handler = new SqlServerHandler($badDsn);
     }
 
     public function testWrite()

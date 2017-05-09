@@ -45,13 +45,7 @@ class SqlServerHandler extends AbstractProcessingHandler
         $bubble = true,
         $loggerName = null
     ) {
-        try {
-            $this->connection = new PDO($dsn);
-        }
-        catch (PDOException $ex){
-            throw new \RuntimeException("Error connecting to DSN $dsn", 0, $ex);
-        }
-
+        $this->connection = new PDO($dsn);
         $this
             ->setLoggerName($loggerName ?? 'Monolog')
             ->setPdoErrorMode(PDO::ERRMODE_EXCEPTION)
@@ -112,17 +106,11 @@ EOSQL
     {
         //TODO: SQL server chokes on DATE_ATOM because of the timezone offset
         //TODO: I need to make thread not null.
-        try {
-            $this->statement->execute([
-                ':datetime' => $record['datetime']->format(DATE_ATOM),
-                ':level_name' => $record['level_name'],
-                ':message' => $record['message'],
-                ':logger' => $this->logger,
-            ]);
-        } catch (PDOException $e) {
-            echo sprintf("Date: \"%s\"", $record['datetime']->format(DATE_ATOM));
-            //$this->statement->debugDumpParams();
-            throw $e;
-        }
+        $this->statement->execute([
+            ':datetime' => $record['datetime']->format(DATE_ATOM),
+            ':level_name' => $record['level_name'],
+            ':message' => $record['message'],
+            ':logger' => $this->logger,
+        ]);
     }
 }
