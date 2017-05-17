@@ -6,9 +6,9 @@ namespace SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler;
 use Monolog\Logger;
 use PDO;
 use PDOException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
+class SqlServerHandlerTest extends TestCase
 {
     private $dsn =
         'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=AlwaysEncryptedSample;' .
@@ -53,18 +53,18 @@ class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
     public function testBogusDsn()
     {
         $badDsn = 'zippydb:name=Not The Greatest Db;Other=Just a Tribute;';
-        $handler = new SqlServerHandler($badDsn);
+        new SqlServerHandler($badDsn);
     }
 
     /**
      * @expectedException PDOException
-     * @expectedExceptionMessage SQLSTATE[08001] SQLDriverConnect: 10061 [Microsoft][ODBC Driver 13 for SQL Server]TCP Provider: No connection could be made because the target machine actively refused it.
+     * @expectedExceptionMessage No connection could be made because the target machine actively refused it.
      */
     public function testBadSqlServerPort()
     {
         $badDsn = 'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,9999;Database=AlwaysEncryptedSample;' .
             'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
-        $handler = new SqlServerHandler($badDsn);
+        new SqlServerHandler($badDsn);
     }
 
     /**
@@ -75,7 +75,7 @@ class SqlServerHandlerTest extends PHPUnit_Framework_TestCase
     {
         $badDsn = 'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=Not A Real Db;' .
             'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
-        $handler = new SqlServerHandler($badDsn);
+        new SqlServerHandler($badDsn);
     }
 
     public function testWrite()
@@ -87,12 +87,17 @@ DECLARE @timestamp VARCHAR(35) = :datetime;
 SELECT COUNT(*) FROM Logging.Log WHERE [Date] = @timestamp AND message = :message;
 EOSQL;
 
+        $this->connection->beginTransaction();
         $stmt = $this->connection->prepare($sql);
         $stmt->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $stmt->bindValue(':datetime', $record['datetime']->format(DATE_ATOM));
         $stmt->bindValue(':message', $record['message']);
 
         $stmt->execute();
-        $this->assertEquals('1', $stmt->fetchColumn());
+        $this->assertEquals(1, $stmt->fetchColumn());
+        $this->connection->rollBack();
+
+        $stmt->execute();
+        $this->assertEquals(false, $stmt->fetchColumn(), 'Rollback didn\'t work.');
     }
 }
