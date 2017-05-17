@@ -30,6 +30,9 @@ class SqlServerHandlerTest extends TestCase
     }
 
     /**
+     * @param int $level
+     * @param string $message
+     * @param array $context
      * @return array Record
      */
     protected function getRecord($level = Logger::WARNING, $message = 'test', $context = array())
@@ -97,7 +100,10 @@ EOSQL;
         $this->assertEquals(1, $stmt->fetchColumn());
         $this->connection->rollBack();
 
-        $stmt->execute();
+        $stmt = $this->connection->prepare($sql);
+        $stmt->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt->bindValue(':datetime', $record['datetime']->format(DATE_ATOM));
+        $stmt->bindValue(':message', $record['message']);
         $this->assertEquals(false, $stmt->fetchColumn(), 'Rollback didn\'t work.');
     }
 }
