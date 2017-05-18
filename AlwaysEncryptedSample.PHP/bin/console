@@ -1,0 +1,10 @@
+<?php
+
+use SqlCollaborative\AlwaysEncryptedSample\Command\GenerateSSN;
+use Symfony\Component\Console\Application;
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$app = new Application();
+$app->add(new GenerateSSN());
+$app->run();

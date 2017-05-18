@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fb8581f3-0d04-4a92-9048-d4f685a8cba2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Command/GenerateSSN.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/AlwaysEncryptedSample.PHP.iml" afterPath="$PROJECT_DIR$/.idea/AlwaysEncryptedSample.PHP.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" afterPath="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/Util/SSNGeneratorTest.php" afterPath="$PROJECT_DIR$/tests/Util/SSNGeneratorTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -56,31 +56,63 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="SSNGenerator.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Util/SSNGenerator.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="833">
+              <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SSNGeneratorTest.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/Util/SSNGeneratorTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="40">
+              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/composer.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            <state relative-caret-position="306">
+              <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="console" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/console">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="67" lean-forward="false" selection-start-line="0" selection-start-column="67" selection-end-line="0" selection-end-column="67" />
+            <state relative-caret-position="136">
+              <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+              <folding>
+                <element signature="e#7#70#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Application.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Application.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="289" column="7" lean-forward="true" selection-start-line="289" selection-start-column="7" selection-end-line="289" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cli-config.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/config/cli-config.php">
+      <file leaf-file-name="GenerateSSN.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Command/GenerateSSN.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+            <state relative-caret-position="136">
+              <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -89,8 +121,8 @@
       <file leaf-file-name="SqlServerHandlerTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1258">
-              <caret line="77" column="8" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
+            <state relative-caret-position="1751">
+              <caret line="106" column="83" lean-forward="false" selection-start-line="106" selection-start-column="83" selection-end-line="106" selection-end-column="83" />
               <folding>
                 <element signature="e#101#120#0#PHP" expanded="true" />
               </folding>
@@ -98,37 +130,188 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/bin/console">
+      <file leaf-file-name="PDO.php" pinned="false" current-in-tab="false">
+        <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+            <state relative-caret-position="12869">
+              <caret line="757" column="20" lean-forward="false" selection-start-line="757" selection-start-column="20" selection-end-line="757" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SqlServerHandler.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php">
+      <file leaf-file-name="Assert.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/src/Framework/Assert.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="799">
-              <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+            <state relative-caret-position="27064">
+              <caret line="1651" column="27" lean-forward="false" selection-start-line="1651" selection-start-column="27" selection-end-line="1651" selection-end-column="27" />
               <folding>
-                <element signature="e#101#118#0#PHP" expanded="true" />
-                <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-                <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-                <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
+                <marker date="1495078651139" expanded="true" signature="2482:85982" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="58474:58552" ph=" Asserts that two XML documents are equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="60072:60087" ph=" Asserts that two XML documents are not equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="60191:60355" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="60364:60591" ph=" Asserts that a hierarchy of DOMElements matches. ..." />
+                <marker date="1495078651139" expanded="true" signature="60741:63125" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="61021:61127" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61162:62342" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61196:61561" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61328:61547" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61640:62332" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61796:61858" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61902:62318" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61936:62299" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="61970:62277" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="62487:62805" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="62607:62795" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="62880:63118" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="62925:63107" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="63134:63314" ph=" Evaluates a PHPUnit_Framework_Constraint matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="63401:63508" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="63517:63646" ph=" Asserts that a string is a valid JSON string. ..." />
+                <marker date="1495078651139" expanded="true" signature="63714:63909" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="63760:63832" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="63918:64101" ph=" Asserts that two given JSON encoded objects or arrays are equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="64206:64464" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="64473:64660" ph=" Asserts that two given JSON encoded objects or arrays are not equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="64768:65042" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="65051:65261" ph=" Asserts that the generated JSON encoded object and the content of the given file are equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="65364:65741" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="65750:65964" ph=" Asserts that the generated JSON encoded object and the content of the given file are not equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="66070:66463" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="66472:66629" ph=" Asserts that two JSON files are equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="66730:67369" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="67378:67539" ph=" Asserts that two JSON files are not equal. ..." />
+                <marker date="1495078651139" expanded="true" signature="67643:68314" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="68323:68428" ph=" Returns a PHPUnit_Framework_Constraint_And matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="68470:68642" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="68651:68754" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="68795:68966" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="68975:69124" ph=" Returns a PHPUnit_Framework_Constraint_Not matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="69188:69244" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="69253:69358" ph=" Returns a PHPUnit_Framework_Constraint_Xor matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="69400:69572" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="69581:69693" ph=" Returns a PHPUnit_Framework_Constraint_IsAnything matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="69733:69776" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="69785:69889" ph=" Returns a PHPUnit_Framework_Constraint_IsTrue matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="69927:69966" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="69975:70123" ph=" Returns a PHPUnit_Framework_Constraint_Callback matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="70172:70224" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="70233:70339" ph=" Returns a PHPUnit_Framework_Constraint_IsFalse matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="70378:70418" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="70427:70531" ph=" Returns a PHPUnit_Framework_Constraint_IsJson matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="70569:70608" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="70617:70721" ph=" Returns a PHPUnit_Framework_Constraint_IsNull matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="70759:70798" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="70807:70915" ph=" Returns a PHPUnit_Framework_Constraint_IsFinite matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="70955:70996" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="71005:71117" ph=" Returns a PHPUnit_Framework_Constraint_IsInfinite matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="71159:71202" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="71211:71313" ph=" Returns a PHPUnit_Framework_Constraint_IsNan matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="71350:71388" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="71397:71591" ph=" Returns a PHPUnit_Framework_Constraint_Attribute matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="71670:71775" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="71784:72046" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContains matcher ..." />
+                <marker date="1495078651139" expanded="true" signature="72160:72273" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="72282:72461" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContainsOnly matcher ..." />
+                <marker date="1495078651139" expanded="true" signature="72510:72573" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="72582:72766" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContainsOnly matcher ..." />
+                <marker date="1495078651139" expanded="true" signature="72831:72906" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="72915:73061" ph=" Returns a PHPUnit_Framework_Constraint_ArrayHasKey matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="73108:73158" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="73167:73430" ph=" Returns a PHPUnit_Framework_Constraint_IsEqual matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="73549:73714" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="73723:74118" ph=" Returns a PHPUnit_Framework_Constraint_IsEqual matcher object ..." />
+                <marker date="1495078651139" expanded="true" signature="74262:74524" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="74302:74516" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="74331:74478" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="74533:74639" ph=" Returns a PHPUnit_Framework_Constraint_IsEmpty matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="74678:74718" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="74727:74839" ph=" Returns a PHPUnit_Framework_Constraint_IsWritable matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="74881:74924" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="74933:75045" ph=" Returns a PHPUnit_Framework_Constraint_IsReadable matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="75087:75130" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="75139:75261" ph=" Returns a PHPUnit_Framework_Constraint_DirectoryExists matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="75308:75356" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="75365:75477" ph=" Returns a PHPUnit_Framework_Constraint_FileExists matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="75519:75562" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="75571:75719" ph=" Returns a PHPUnit_Framework_Constraint_GreaterThan matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="75768:75820" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="75829:76092" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object that wraps ..." />
+                <marker date="1495078651139" expanded="true" signature="76148:76274" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="76188:76266" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="76283:76452" ph=" Returns a PHPUnit_Framework_Constraint_ClassHasAttribute matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="76515:76603" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="76612:76800" ph=" Returns a PHPUnit_Framework_Constraint_ClassHasStaticAttribute matcher ..." />
+                <marker date="1495078651139" expanded="true" signature="76869:76963" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="76972:77143" ph=" Returns a PHPUnit_Framework_Constraint_ObjectHasAttribute matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="77207:77296" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="77305:77453" ph=" Returns a PHPUnit_Framework_Constraint_IsIdentical matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="77502:77554" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="77563:77718" ph=" Returns a PHPUnit_Framework_Constraint_IsInstanceOf matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="77772:77829" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="77838:77976" ph=" Returns a PHPUnit_Framework_Constraint_IsType matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="78019:78065" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="78074:78216" ph=" Returns a PHPUnit_Framework_Constraint_LessThan matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="78262:78311" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="78320:78580" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object that wraps ..." />
+                <marker date="1495078651139" expanded="true" signature="78633:78756" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="78673:78748" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="78765:78920" ph=" Returns a PHPUnit_Framework_Constraint_PCREMatch matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="78984:79044" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="79053:79224" ph=" Returns a PHPUnit_Framework_Constraint_StringMatches matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="79270:79342" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="79351:79510" ph=" Returns a PHPUnit_Framework_Constraint_StringStartsWith matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="79565:79623" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="79632:79815" ph=" Returns a PHPUnit_Framework_Constraint_StringContains matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="79882:79945" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="79954:80109" ph=" Returns a PHPUnit_Framework_Constraint_StringEndsWith matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="80162:80218" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="80227:80361" ph=" Returns a PHPUnit_Framework_Constraint_Count matcher object. ..." />
+                <marker date="1495078651139" expanded="true" signature="80406:80452" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="80461:80591" ph=" Fails a test with the given message. ..." />
+                <marker date="1495078651139" expanded="true" signature="80640:80727" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="80736:81039" ph=" Returns the value of an attribute of a class or an object. ..." />
+                <marker date="1495078651139" expanded="true" signature="81114:82078" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="81163:81235" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81327:81413" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81457:81785" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81507:81649" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81561:81634" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81698:81774" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81829:81963" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="81876:81952" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="82011:82070" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="82087:82354" ph=" Returns the value of a static attribute. ..." />
+                <marker date="1495078651139" expanded="true" signature="82430:83456" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="82475:82547" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="82591:82667" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="82712:82784" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="82876:82962" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="83040:83287" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="83164:83229" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="83340:83438" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="83465:83732" ph=" Returns the value of an object's attribute. ..." />
+                <marker date="1495078651139" expanded="true" signature="83805:85188" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="83847:83919" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="83964:84036" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84128:84214" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84230:84313" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84347:84683" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84468:84673" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84490:84608" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84642:84659" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84718:85018" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="84775:84836" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="85071:85170" ph="..." />
+                <marker date="1495078651139" expanded="true" signature="85197:85318" ph=" Mark the test as incomplete. ..." />
+                <marker date="1495078651139" expanded="true" signature="85381:85442" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="85451:85566" ph=" Mark the test as skipped. ..." />
+                <marker date="1495078651139" expanded="true" signature="85626:85684" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="85693:85768" ph=" Return the current assertion count. ..." />
+                <marker date="1495078651139" expanded="true" signature="85808:85849" ph="{...}" />
+                <marker date="1495078651139" expanded="true" signature="85858:85900" ph=" Reset the assertion counter. ..." />
+                <marker date="1495078651139" expanded="true" signature="85942:85980" ph="{...}" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -149,13 +332,17 @@
         <option value="$PROJECT_DIR$/dependencies.yml" />
         <option value="$PROJECT_DIR$/vendor/monolog/monolog/tests/Monolog/TestCase.php" />
         <option value="$PROJECT_DIR$/vendor/composer/autoload_psr4.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql" />
         <option value="$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php" />
         <option value="$PROJECT_DIR$/config/cli-config.php" />
-        <option value="$PROJECT_DIR$/bin/console" />
-        <option value="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql" />
+        <option value="$PROJECT_DIR$/config/bootstrap.php" />
+        <option value="$PROJECT_DIR$/src/Util/SSNGenerator.php" />
+        <option value="$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php" />
+        <option value="$PROJECT_DIR$/tests/Util/SSNGeneratorTest.php" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/bin/console" />
+        <option value="$PROJECT_DIR$/src/Command/GenerateSSN.php" />
       </list>
     </option>
   </component>
@@ -172,7 +359,6 @@
     <include_path>
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
@@ -190,9 +376,6 @@
       <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/squizlabs/php_codesniffer" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/common" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
       <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
       <path value="$PROJECT_DIR$/vendor/phar-io/version" />
@@ -206,14 +389,10 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
       <path value="$PROJECT_DIR$/vendor/symfony/debug" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/annotations" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
-      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
       <path value="$PROJECT_DIR$/vendor/symfony/dependency-injection" />
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
@@ -244,6 +423,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -301,10 +481,6 @@
               <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Monolog" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -316,7 +492,7 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="tests" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -372,11 +548,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/PhpstormProjects" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/tests/Util" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode.PHP" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="SQL Server (Microsoft)" />
@@ -486,44 +661,46 @@
       <workItem from="1494023090546" duration="1038000" />
       <workItem from="1494117243973" duration="22505000" />
       <workItem from="1494451998743" duration="4789000" />
-      <workItem from="1494971894311" duration="457000" />
+      <workItem from="1494971894311" duration="3599000" />
+      <workItem from="1495017529213" duration="5334000" />
+      <workItem from="1495077780925" duration="2175000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 05m 24s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 07m 31s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 08m 54s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 10m 15s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 11m 12s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.09 at 19h 12m 50s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.10 at 17h 46m 13s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.10 at 17h 48m 41s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="PHPUNit - 2017.05.10 at 17h 56m 26s.xml">
-      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="PHPUNit - 2017.05.10 at 17h 59m 36s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.16 at 22h 04m 18s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 06m 38s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 08m 18s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 10m 32s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 10m 54s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 12m 48s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 14m 20s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 16m 23s.xml">
+      <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="PHPUNit - 2017.05.17 at 18h 17m 35s.xml">
       <configuration name="PHPUNit" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37804000" />
+    <option name="totallyTimeSpent" value="48455000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -532,13 +709,13 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17715959" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15300146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49842766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15153733" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.49842766" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39937106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -557,7 +734,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="9" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/src/Util/SSNGenerator.php</url>
+          <line>28</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PHPUnitRunConfigurationType">
@@ -568,69 +752,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/cli-config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="77" column="8" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
-          <folding>
-            <element signature="e#101#120#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/console">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Monolog/Handler/SqlServerHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-          <folding>
-            <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-            <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/cli-config.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -653,12 +774,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
           <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
-          <folding>
-            <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-            <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -673,7 +788,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -681,7 +795,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-          <folding />
+          <folding>
+            <element signature="e#7#70#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -697,7 +813,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#7#70#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -712,12 +830,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-            <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,7 +884,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#7#70#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -826,12 +940,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="4" lean-forward="false" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-          <folding>
-            <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-            <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -913,34 +1021,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <caret line="0" column="67" lean-forward="false" selection-start-line="0" selection-start-column="67" selection-end-line="0" selection-end-column="67" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/cli-config.php">
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/dbunit/src/Database/Connection.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/console">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1374" column="0" lean-forward="false" selection-start-line="1374" selection-start-column="0" selection-end-line="1374" selection-end-column="0" />
+        <state relative-caret-position="1343">
+          <caret line="89" column="7" lean-forward="false" selection-start-line="89" selection-start-column="7" selection-end-line="89" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -948,37 +1039,279 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
           <caret line="51" column="36" lean-forward="false" selection-start-line="51" selection-start-column="36" selection-end-line="51" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/a5d883c6-045e-47e6-9485-383386279991/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/cli-config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
           <folding>
-            <element signature="e#101#118#0#PHP" expanded="true" />
-            <marker date="1494371228219" expanded="true" signature="1320:1486" ph="INSERT INTO Logging.Log... " />
-            <marker date="1494371228219" expanded="true" signature="1382:1406" ph="/*, [User], " />
-            <marker date="1494371228219" expanded="true" signature="1461:1485" ph="/*, @user, @... " />
+            <element signature="e#6#35#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_9.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="742" column="10" lean-forward="false" selection-start-line="742" selection-start-column="10" selection-end-line="742" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/src/Framework/Assert.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27064">
+          <caret line="1651" column="27" lean-forward="false" selection-start-line="1651" selection-start-column="27" selection-end-line="1651" selection-end-column="27" />
+          <folding>
+            <marker date="1495078651139" expanded="true" signature="2482:85982" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="58474:58552" ph=" Asserts that two XML documents are equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="60072:60087" ph=" Asserts that two XML documents are not equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="60191:60355" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="60364:60591" ph=" Asserts that a hierarchy of DOMElements matches. ..." />
+            <marker date="1495078651139" expanded="true" signature="60741:63125" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="61021:61127" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61162:62342" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61196:61561" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61328:61547" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61640:62332" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61796:61858" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61902:62318" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61936:62299" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="61970:62277" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="62487:62805" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="62607:62795" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="62880:63118" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="62925:63107" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="63134:63314" ph=" Evaluates a PHPUnit_Framework_Constraint matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="63401:63508" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="63517:63646" ph=" Asserts that a string is a valid JSON string. ..." />
+            <marker date="1495078651139" expanded="true" signature="63714:63909" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="63760:63832" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="63918:64101" ph=" Asserts that two given JSON encoded objects or arrays are equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="64206:64464" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="64473:64660" ph=" Asserts that two given JSON encoded objects or arrays are not equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="64768:65042" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="65051:65261" ph=" Asserts that the generated JSON encoded object and the content of the given file are equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="65364:65741" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="65750:65964" ph=" Asserts that the generated JSON encoded object and the content of the given file are not equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="66070:66463" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="66472:66629" ph=" Asserts that two JSON files are equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="66730:67369" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="67378:67539" ph=" Asserts that two JSON files are not equal. ..." />
+            <marker date="1495078651139" expanded="true" signature="67643:68314" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="68323:68428" ph=" Returns a PHPUnit_Framework_Constraint_And matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="68470:68642" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="68651:68754" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="68795:68966" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="68975:69124" ph=" Returns a PHPUnit_Framework_Constraint_Not matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="69188:69244" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="69253:69358" ph=" Returns a PHPUnit_Framework_Constraint_Xor matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="69400:69572" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="69581:69693" ph=" Returns a PHPUnit_Framework_Constraint_IsAnything matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="69733:69776" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="69785:69889" ph=" Returns a PHPUnit_Framework_Constraint_IsTrue matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="69927:69966" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="69975:70123" ph=" Returns a PHPUnit_Framework_Constraint_Callback matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="70172:70224" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="70233:70339" ph=" Returns a PHPUnit_Framework_Constraint_IsFalse matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="70378:70418" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="70427:70531" ph=" Returns a PHPUnit_Framework_Constraint_IsJson matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="70569:70608" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="70617:70721" ph=" Returns a PHPUnit_Framework_Constraint_IsNull matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="70759:70798" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="70807:70915" ph=" Returns a PHPUnit_Framework_Constraint_IsFinite matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="70955:70996" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="71005:71117" ph=" Returns a PHPUnit_Framework_Constraint_IsInfinite matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="71159:71202" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="71211:71313" ph=" Returns a PHPUnit_Framework_Constraint_IsNan matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="71350:71388" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="71397:71591" ph=" Returns a PHPUnit_Framework_Constraint_Attribute matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="71670:71775" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="71784:72046" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContains matcher ..." />
+            <marker date="1495078651139" expanded="true" signature="72160:72273" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="72282:72461" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContainsOnly matcher ..." />
+            <marker date="1495078651139" expanded="true" signature="72510:72573" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="72582:72766" ph=" Returns a PHPUnit_Framework_Constraint_TraversableContainsOnly matcher ..." />
+            <marker date="1495078651139" expanded="true" signature="72831:72906" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="72915:73061" ph=" Returns a PHPUnit_Framework_Constraint_ArrayHasKey matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="73108:73158" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="73167:73430" ph=" Returns a PHPUnit_Framework_Constraint_IsEqual matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="73549:73714" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="73723:74118" ph=" Returns a PHPUnit_Framework_Constraint_IsEqual matcher object ..." />
+            <marker date="1495078651139" expanded="true" signature="74262:74524" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="74302:74516" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="74331:74478" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="74533:74639" ph=" Returns a PHPUnit_Framework_Constraint_IsEmpty matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="74678:74718" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="74727:74839" ph=" Returns a PHPUnit_Framework_Constraint_IsWritable matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="74881:74924" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="74933:75045" ph=" Returns a PHPUnit_Framework_Constraint_IsReadable matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="75087:75130" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="75139:75261" ph=" Returns a PHPUnit_Framework_Constraint_DirectoryExists matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="75308:75356" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="75365:75477" ph=" Returns a PHPUnit_Framework_Constraint_FileExists matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="75519:75562" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="75571:75719" ph=" Returns a PHPUnit_Framework_Constraint_GreaterThan matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="75768:75820" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="75829:76092" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object that wraps ..." />
+            <marker date="1495078651139" expanded="true" signature="76148:76274" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="76188:76266" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="76283:76452" ph=" Returns a PHPUnit_Framework_Constraint_ClassHasAttribute matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="76515:76603" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="76612:76800" ph=" Returns a PHPUnit_Framework_Constraint_ClassHasStaticAttribute matcher ..." />
+            <marker date="1495078651139" expanded="true" signature="76869:76963" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="76972:77143" ph=" Returns a PHPUnit_Framework_Constraint_ObjectHasAttribute matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="77207:77296" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="77305:77453" ph=" Returns a PHPUnit_Framework_Constraint_IsIdentical matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="77502:77554" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="77563:77718" ph=" Returns a PHPUnit_Framework_Constraint_IsInstanceOf matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="77772:77829" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="77838:77976" ph=" Returns a PHPUnit_Framework_Constraint_IsType matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="78019:78065" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="78074:78216" ph=" Returns a PHPUnit_Framework_Constraint_LessThan matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="78262:78311" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="78320:78580" ph=" Returns a PHPUnit_Framework_Constraint_Or matcher object that wraps ..." />
+            <marker date="1495078651139" expanded="true" signature="78633:78756" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="78673:78748" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="78765:78920" ph=" Returns a PHPUnit_Framework_Constraint_PCREMatch matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="78984:79044" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="79053:79224" ph=" Returns a PHPUnit_Framework_Constraint_StringMatches matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="79270:79342" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="79351:79510" ph=" Returns a PHPUnit_Framework_Constraint_StringStartsWith matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="79565:79623" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="79632:79815" ph=" Returns a PHPUnit_Framework_Constraint_StringContains matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="79882:79945" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="79954:80109" ph=" Returns a PHPUnit_Framework_Constraint_StringEndsWith matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="80162:80218" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="80227:80361" ph=" Returns a PHPUnit_Framework_Constraint_Count matcher object. ..." />
+            <marker date="1495078651139" expanded="true" signature="80406:80452" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="80461:80591" ph=" Fails a test with the given message. ..." />
+            <marker date="1495078651139" expanded="true" signature="80640:80727" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="80736:81039" ph=" Returns the value of an attribute of a class or an object. ..." />
+            <marker date="1495078651139" expanded="true" signature="81114:82078" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="81163:81235" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81327:81413" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81457:81785" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81507:81649" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81561:81634" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81698:81774" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81829:81963" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="81876:81952" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="82011:82070" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="82087:82354" ph=" Returns the value of a static attribute. ..." />
+            <marker date="1495078651139" expanded="true" signature="82430:83456" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="82475:82547" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="82591:82667" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="82712:82784" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="82876:82962" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="83040:83287" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="83164:83229" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="83340:83438" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="83465:83732" ph=" Returns the value of an object's attribute. ..." />
+            <marker date="1495078651139" expanded="true" signature="83805:85188" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="83847:83919" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="83964:84036" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84128:84214" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84230:84313" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84347:84683" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84468:84673" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84490:84608" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84642:84659" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84718:85018" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="84775:84836" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="85071:85170" ph="..." />
+            <marker date="1495078651139" expanded="true" signature="85197:85318" ph=" Mark the test as incomplete. ..." />
+            <marker date="1495078651139" expanded="true" signature="85381:85442" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="85451:85566" ph=" Mark the test as skipped. ..." />
+            <marker date="1495078651139" expanded="true" signature="85626:85684" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="85693:85768" ph=" Return the current assertion count. ..." />
+            <marker date="1495078651139" expanded="true" signature="85808:85849" ph="{...}" />
+            <marker date="1495078651139" expanded="true" signature="85858:85900" ph=" Reset the assertion counter. ..." />
+            <marker date="1495078651139" expanded="true" signature="85942:85980" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12869">
+          <caret line="757" column="20" lean-forward="false" selection-start-line="757" selection-start-column="20" selection-end-line="757" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Util/SSNGenerator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/Monolog/Handler/SqlServerHandlerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="77" column="8" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
+        <state relative-caret-position="1751">
+          <caret line="106" column="83" lean-forward="false" selection-start-line="106" selection-start-column="83" selection-end-line="106" selection-end-column="83" />
           <folding>
             <element signature="e#101#120#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
+    <entry file="file://$PROJECT_DIR$/tests/Util/SSNGeneratorTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        <state relative-caret-position="40">
+          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/composer.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="67" lean-forward="false" selection-start-line="0" selection-start-column="67" selection-end-line="0" selection-end-column="67" />
+        <state relative-caret-position="306">
+          <caret line="18" column="29" lean-forward="false" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Command/GenerateSSN.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="13" column="51" lean-forward="false" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/console">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="7" lean-forward="true" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding>
+            <element signature="e#7#70#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/console/Application.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="289" column="7" lean-forward="true" selection-start-line="289" selection-start-column="7" selection-end-line="289" selection-end-column="7" />
           <folding />
         </state>
       </provider>

@@ -11,8 +11,8 @@ class SSNGeneratorTest extends TestCase
     /**
      * @var string $validSsnRegex
      */
-    private $validSsnRegex = '/^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/';
-    private $niaveSsnRegex = '/^\d{3}-\d{2}-\d{4}$/';
+    const VALID_SSN_REGEX = '/^(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$/';
+    const NIAVE_SSN_REGEX = '/^\d{3}-\d{2}-\d{4}$/';
     /**
      * @var SSNGenerator $ssnGenerator
      */
@@ -27,8 +27,8 @@ class SSNGeneratorTest extends TestCase
     {
         $ssn = $this->ssnGenerator->generateSSN();
         $this->assertEquals(11, strlen($ssn));
-        $this->assertRegExp($this->niaveSsnRegex, $ssn, 'Generated SSN not in the correct format: ' . $ssn);
-        $this->assertNotRegExp($this->validSsnRegex, $ssn, 'Generated SSN is in the valid range: ' . $ssn);
+        $this->assertRegExp(self::NIAVE_SSN_REGEX, $ssn, 'Generated SSN not in the correct format: ' . $ssn);
+        $this->assertNotRegExp(self::VALID_SSN_REGEX, $ssn, 'Generated SSN is in the valid range: ' . $ssn);
     }
 
 }
