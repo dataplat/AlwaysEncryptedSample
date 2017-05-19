@@ -1,12 +1,16 @@
 version: '3'
 
 services:
+    client:
+        build: ./provision/sqlserver-client
+        volumes:
+          - .:/opt/AlwaysEncryptedSample
     db:
         build: ./provision/sqlserver
         ports:
-            - "11433:1433"
+            - "1433:1433"
         environment:
             - ACCEPT_EULA=Y
-            - SA_PASSWORD=a1waysB3Encrypting
+            - SA_PASSWORD=alwaysB3Encrypt1ng
         volumes:
             - ./volumes/mssql:/var/opt/mssql
