@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: zippy
- * Date: 2017-05-17
- * Time: 23:44
- */
+declare(strict_types = 1);
 
 namespace SqlCollaborative\AlwaysEncryptedSample\Command;
 

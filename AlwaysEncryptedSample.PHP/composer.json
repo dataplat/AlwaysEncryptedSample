@@ -16,7 +16,8 @@
         "symfony/config": "^3.3",
         "symfony/console": "^3.3",
         "symfony/dependency-injection": "^3.3",
-        "symfony/yaml": "^3.3"
+        "symfony/yaml": "^3.3",
+        "fzaninotto/faker": "^1.6@dev"
 
     },
     "require-dev": {

@@ -3,6 +3,10 @@ declare(strict_types = 1);
 
 namespace SqlCollaborative\AlwaysEncryptedSample\Util;
 
+/**
+ * Generates a fake social security number not in the range of social security numbers actually generated.
+ * @link  http://stackoverflow.com/questions/2313704/is-there-a-social-security-number-reserved-for-testing-examples
+ */
 class SSNGenerator
 {
     private $testAreaGroups = null;
