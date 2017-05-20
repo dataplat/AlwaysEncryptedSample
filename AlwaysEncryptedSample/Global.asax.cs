@@ -1,4 +1,6 @@
 ﻿using System.Configuration;
+using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -18,7 +20,44 @@ namespace AlwaysEncryptedSample
 {
     public class MvcApplication : System.Web.HttpApplication
     {
-        private void InitLog4NetDb(SqlConnection cn)
+        /// <summary>
+        /// Creates a database if it doesn't exist.
+        /// </summary>
+        /// <param name="builder">Connection string builder to the database we want to create.</param>
+        /// <returns>
+        /// <c>true</c> if the database existed or we were able to create it, <c>false</c> if we could not try
+        /// </returns>
+        /// <remarks>
+        ///
+        /// </remarks>
+        private bool CreateDatabase(SqlConnectionStringBuilder builder)
+        {
+            var dbName = builder.InitialCatalog;
+
+            // Can't connect to a db that doesn't already exist.
+            builder.InitialCatalog = "tempdb";
+            using (var cn = new SqlConnection(builder.ConnectionString))
+            using (var cmd = cn.CreateCommand())
+            {
+                cmd.CommandText =
+                    "IF DB_ID(@dbName) IS NULL " +
+                    "EXEC ('CREATE DATABASE ' + @dbName + '; " +
+                    "ALTER DATABASE ' + @dbName + ' SET RECOVERY SIMPLE;')";
+                cmd.Parameters.AddWithValue("@dbName", dbName);
+                try
+                {
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void InitLog4NetDb(IDbConnection cn)
         {
             //TODO: Make the database if it doesn't exist.
             var rm = new ResourceManager
@@ -31,22 +70,7 @@ namespace AlwaysEncryptedSample
                  * exist. However, since we want log4net to log EF activity to the database
                  * we have a chicken or egg problem.
                  */
-                var builder = new SqlConnectionStringBuilder(cn.ConnectionString);
-                var dbName = builder.InitialCatalog;
-                // Can't connect to a db that doesn't already exist. 
-                builder.InitialCatalog = "tempdb";
-                cn.ConnectionString = builder.ConnectionString;
-                cn.Open();
-                cmd.CommandText = 
-                    "IF DB_ID(@dbName) IS NULL " +
-                    "EXEC ('CREATE DATABASE ' + @dbName + '; " +
-                    "ALTER DATABASE ' + @dbName + ' SET RECOVERY SIMPLE;')";
-                cmd.Parameters.AddWithValue("@dbName", dbName);
-                cmd.ExecuteNonQuery();
-                cmd.Parameters.Clear();
-                cn.Close();
-                builder.InitialCatalog = dbName;
-                cn.ConnectionString = builder.ConnectionString;
+
                 cn.Open();
                 /*
                  * ADO.NET doesn't parse batches (read support the GO statement).
@@ -63,10 +87,14 @@ namespace AlwaysEncryptedSample
                 cn.Close();
             }
         }
+
         protected void Application_Start()
         {
             using (var cn = new SqlConnection(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString))
             {
+                // CreateDatabase will fail on azure because I can't connect to tempdb;
+                var builder = new SqlConnectionStringBuilder(cn.ConnectionString);
+                var createDbError = CreateDatabase(builder);
                 InitLog4NetDb(cn);
             }
             
