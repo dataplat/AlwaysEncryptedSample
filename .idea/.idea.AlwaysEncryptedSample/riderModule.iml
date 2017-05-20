@@ -6,8 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/../../AlwaysEncryptedSample.Models" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../AlwaysEncryptedSample.Tests" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../docker-compose.yml" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../../Encryption.ps1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../Invoke-EncryptColumns.ps1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../License.md" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../New-EncryptionKeys.ps1" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../../ReadMe.md" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/../../AlwaysEncryptedSample.Models/bin" />
       <excludeFolder url="file://$MODULE_DIR$/../../AlwaysEncryptedSample.Models/obj" />
