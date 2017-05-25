@@ -82,6 +82,6 @@ class AspNetIdentity
             return false;
         }
         $actualHashedPassword = $this->hashPassword($password, $salt);
-        return ($actualHashedPassword === $hashedPassword);
+        return hash_equals($actualHashedPassword, $hashedPassword);
     }
 }
