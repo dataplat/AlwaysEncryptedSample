@@ -8,7 +8,7 @@ use RuntimeException;
 /**
  * Class AspNetIdentity
  * @package SqlCollaborative\AlwaysEncryptedSample\Security
- * A direct port of the algorithims to generate and verify ASP.NET password hashes found here:
+ * A direct port of the algorithm to generate and verify ASP.NET password hashes found here:
  * @link https://aspnetidentity.codeplex.com/SourceControl/latest#src/Microsoft.AspNet.Identity.Core/Crypto.cs
  * For mor information:
  * @link http://stackoverflow.com/questions/20621950/asp-net-identity-default-password-hasher-how-does-it-work-and-is-it-secure
@@ -19,53 +19,69 @@ class AspNetIdentity
     const PBKDF2_SUBKEY_LENGTH = 256/8; // 256 bits
     const SALT_SIZE = 128/8; // 128 bits
 
-    public function HashPassword(string $password) : string
+    private function generateRandomSalt() : string
     {
-        // Produce a version 0 (see comment above) text hash.
-        $salt = [];
-        $subkey = [];
-        $hash = hash_hmac(
-            'sha1',  //TODO: Is SHA1 Broken? Can I make ASP.NET use another algo?
-            $password,
-            random_bytes(self::SALT_SIZE)
-        );
-
-        return base64_encode($hash);
+        return random_bytes(self::SALT_SIZE);
     }
 
-        // hashedPassword must be of the format of HashWithPassword (salt + Hash(salt+input)
-        public function VerifyHashedPassword(string $hashedPassword, string $password) : bool
-        {
-            throw new RuntimeException('Unimplemented');
-            $hashedPasswordByteString = base64_decode($hashedPassword);
-            $expectedHashLength = 1 + self::SALT_SIZE + self::PBKDF2_SUBKEY_LENGTH;
-            $actualHashLength = strlen($hashedPasswordByteString);
-            if ($actualHashLength != $expectedHashLength)
-            {
-                trigger_error(
-                    "Salt is wrong length [ expected = {$expectedHashLength}, actual = {$actualHashLength} ]"
-                );
-                return false;
-            }
-            $header = substr($hashedPasswordByteString, 0,2);
+    public function getPasswordSalt(string $hashedPassword) : string
+    {
+        $hashedPasswordByteString = base64_decode($hashedPassword);
+        $expectedHashLength = 1 + self::SALT_SIZE + self::PBKDF2_SUBKEY_LENGTH;
+        $actualHashLength = strlen($hashedPasswordByteString);
 
-/*
-            if ($header != '00'){
-                trigger_error("Incorrect header [ $header ]");
-            }
-
-            $salt = substr($hashedPasswordByteString, 1, self::SALT_SIZE);
-            Buffer.BlockCopy(hashedPasswordBytes, 1, salt, 0, SaltSize);
-            var storedSubkey = new byte[PBKDF2SubkeyLength];
-            Buffer.BlockCopy(hashedPasswordBytes, 1 + SaltSize, storedSubkey, 0, PBKDF2SubkeyLength);
-
-            byte[] generatedSubkey;
-            using (var deriveBytes = new Rfc2898DeriveBytes(password, salt, PBKDF2IterCount))
-            {
-                generatedSubkey = deriveBytes.GetBytes(PBKDF2SubkeyLength);
-            }
-            return ByteArraysEqual(storedSubkey, generatedSubkey);
- */
+        $header = substr($hashedPasswordByteString, 0, 1);
+        if ($header != "\0"){
+            throw new RuntimeException("Incorrect header [ $header ]");
         }
 
+        if ($actualHashLength != $expectedHashLength)
+        {
+            throw new RuntimeException (
+                "Salted hash is wrong length [ expected = {$expectedHashLength}, actual = {$actualHashLength} ]"
+            );
+        }
+
+        return substr($hashedPasswordByteString, 1, self::SALT_SIZE);
+    }
+
+    /**
+     * Creates a PBKDF2 (AKA Rfc2898) hash from a plaintext password.
+     * @param string $password A plaintext password
+     * @param string|null $salt Optionally specify the hash. This should only be used to verify existin passwords.
+     * @return string The base64 encoded password hash
+     */
+    public function hashPassword(string $password, string $salt = null) : string
+    {
+        $salt = $salt ?? $this->generateRandomSalt();
+        $subkey = hash_pbkdf2(
+            'sha1',  // The SHA1 exploit google discovered is irrevelevant to HMAC_SHA1
+            $password,
+            $salt,
+            self::PBKDF2_ITER_COUNT,
+            self::PBKDF2_SUBKEY_LENGTH,
+            true
+        );
+
+        return base64_encode("\0" . $salt . $subkey);
+    }
+
+    /**
+     * verifies a plaintext password matches its hash.
+     * @param string $hashedPassword must be of the format of HashWithPassword (salt + Hash(salt+input)
+     * @param string $password the plain text version of the password
+     * @return bool true if the password matches false if it does not.
+     */
+    public function verifyHashedPassword(string $hashedPassword, string $password) : bool
+    {
+        try {
+            $salt = $this->getPasswordSalt($hashedPassword);
+        }
+        catch (RuntimeException $ex) {
+            trigger_error($ex->getMessage());
+            return false;
+        }
+        $actualHashedPassword = $this->hashPassword($password, $salt);
+        return ($actualHashedPassword === $hashedPassword);
+    }
 }
