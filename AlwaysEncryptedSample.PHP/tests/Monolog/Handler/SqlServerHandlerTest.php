@@ -12,7 +12,7 @@ class SqlServerHandlerTest extends TestCase
 {
     private $dsn =
         'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=AlwaysEncryptedSample;' .
-        'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample';
+        'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample;';
     /**
      * @var PDO
      */
@@ -43,11 +43,10 @@ class SqlServerHandlerTest extends TestCase
             'level' => $level,
             'level_name' => Logger::getLevelName($level),
             'channel' => 'test',
-            'datetime' => \DateTime::createFromFormat('U.u', sprintf('%.6F', microtime(true))),
+            'datetime' => new \DateTime(),
             'extra' => array(),
         );
     }
-
 
     /**
      * @expectedException PDOException

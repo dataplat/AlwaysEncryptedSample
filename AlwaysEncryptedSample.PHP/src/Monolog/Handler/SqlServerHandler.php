@@ -3,7 +3,6 @@ declare(strict_types = 1);
 
 namespace SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler;
 
-use PDOException;
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use PDO;
@@ -52,8 +51,8 @@ class SqlServerHandler extends AbstractProcessingHandler
             ->setSqlInsert(<<< EOSQL
 DECLARE @timestamp VARCHAR(35) = :datetime;
 INSERT INTO Logging.Log
-  ([Date],[Level],[Message], [Logger] /*, [User], [ClientIP]*/)
-  VALUES (@timestamp, :level_name, :message, :logger /*, @user, @client_ip */);
+  ([Date],[Level],[Message], [Logger], [User], [ClientIP])
+  VALUES (@timestamp, :level_name, :message, :logger, 'PHP CLI', 'PHP CLI');
 EOSQL
             );
         parent::__construct($level, $bubble);
