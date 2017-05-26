@@ -1,7 +1,7 @@
 Always Encrypted Sample Application
 ===================================
 
-This is a smple ASP.NET application that demonstrates Always Encrypted 
+This is a sample ASP.NET application that demonstrates Always Encrypted 
 features based on the Visual Studio 2013 Default ASP.NET MVC project.
 It is ONLY meant to demonstrate Always Encrypted. It is **NOT** meant
 to be a general purposes best practice web application.
@@ -22,9 +22,9 @@ db_datareader and  db_datawriter permissions. However, this is a sample app
 not intended for production usage.
 
 Initially the columns are not encrypted. To encrypt them run the included
-`Encryption.ps1`. This script supports the `-Debug` and `-Verbose` paramaters
+`Encryption.ps1`. This script supports the `-Debug` and `-Verbose` parameters
 This will create a self signed certificate in your user script repository and
-encrypt all the appropiate columns.
+encrypt all the appropriate columns.
 
 Schemas
 -------
@@ -33,9 +33,9 @@ There are there schemas in the sample database.
 
 * **Logging:** This contains one table called log written to by 
 [log4net](https://logging.apache.org/log4net/) using the `AdoNetAppender`. The
-user name and client ip columns are encrypted using deterministric encryption.
+user name and client ip columns are encrypted using deterministic encryption.
 Note that this hurts performance a lot The point of including this is to show
-that as long as you are using paramaterized queries, Always Encrypted can be 
+that as long as you are using parameterized queries, Always Encrypted can be 
 added without code changes.
 * **Authentication:** This contains an implementation of the EF Code first
 [IdentityContext](https://msdn.microsoft.com/en-us/library/microsoft.aspnet.identity.entityframework.identitydbcontext(v=vs.108).aspx).
