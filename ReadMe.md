@@ -1,4 +1,4 @@
-Always Encrypted Sample Application
+Always Encrypted Sample Application [![CircleCI Build Status](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample.svg?style=shield)](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/master/License.md)
 ===================================
 
 This is a smple ASP.NET application that demonstrates Always Encrypted 
