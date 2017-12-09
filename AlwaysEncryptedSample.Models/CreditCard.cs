@@ -24,6 +24,7 @@ namespace AlwaysEncryptedSample.Models
         public byte ExpMonth { get; set; }
         [Required]
         public short ExpYear { get; set; }
+        [Required]
         public short CCV { get; set; }
         [Required]
         public DateTime ModifiedDate { get; set; }
