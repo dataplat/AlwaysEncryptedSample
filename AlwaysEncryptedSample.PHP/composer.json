@@ -11,7 +11,6 @@
     ],
     "require": {
         "ext-pdo": "*",
-        "ext-pdo_sqlsrv": "*",
         "monolog/monolog": "^1.22.1",
         "symfony/config": "^3.3",
         "symfony/console": "^3.3",
@@ -22,8 +21,9 @@
     },
     "require-dev": {
         "ext-xdebug": "*",
-        "phpunit/phpunit": "^6.0",
-        "phpunit/dbunit": "^3.0",
+        "ext-pdo_odbc": "*",
+        "phpunit/phpunit": "^7.5.9",
+        "phpunit/dbunit": "^4.0",
         "squizlabs/php_codesniffer": "^3.0"
     },
     "autoload": {
@@ -35,6 +35,14 @@
         "psr-4": {
             "SqlCollaborative\\AlwaysEncryptedSample\\": "tests/"
         }
+    },
+    "scripts": {
+        "cs-check": "phpcs src/ public/ test/",
+        "cs-fix": "phpcbf src/ public/ test/",
+        "phpmd": "phpmd src/,public/,test text codesize,cleancode,design,naming",
+        "lint": "phplint src index.php",
+        "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
+        "test": "phpunit"
     },
     "minimum-stability": "dev"
 }

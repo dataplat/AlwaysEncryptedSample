@@ -12,7 +12,7 @@ class SqlServerHandlerTest extends TestCase
 {
     private $dsn =
         'odbc:Driver={ODBC Driver 13 for SQL Server};Server=localhost,1433;Database=AlwaysEncryptedSample;' .
-        'UID=sa;PWD=alwaysB3Encrypt1ng;ColumnEncryption=Enabled;APP=PHP Unit -- ALwaysEncrypted Sample;';
+        'UID=AlwaysEncryptedOwner;PWD=7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl;ColumnEncryption=Enabled;APP=PHP Unit -- AlwaysEncrypted Sample;';
     /**
      * @var PDO
      */
