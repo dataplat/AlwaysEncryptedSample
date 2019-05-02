@@ -1,6 +1,9 @@
 version: 1.0.{build}
 image: Visual Studio 2013
 install:
+- ps: Get-Service *sql*
+- cmd: set SQL
+- cmd: sqlcmd -L
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 assembly_info:
   patch: true
