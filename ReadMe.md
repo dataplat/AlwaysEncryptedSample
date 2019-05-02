@@ -73,8 +73,8 @@ using deterministic encryption.
 
 ## Using the app:
 
-The app has two users `Administrator` with the password of `P3ter!` and CCAdmin
-with the password of `P@ul!`. The user administrator has access to an
+The app has two users `Administrator` with the password of `Alm0nds!` and CCAdmin
+with the password of `Appl3s`. The user administrator has access to an
 "Internals" page that lists the columns in the database, as well as the
 encryption information for them. The CCadmin user has a page that will let
 them import 1000 randomly generated fake credit cards, and then display them

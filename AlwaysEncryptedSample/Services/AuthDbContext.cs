@@ -8,7 +8,7 @@ namespace AlwaysEncryptedSample.Services
     public class AuthDbContext : IdentityDbContext<ApplicationUser>
     {
         public AuthDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: true)
         {
         }
 
