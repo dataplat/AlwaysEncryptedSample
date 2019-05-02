@@ -1,0 +1,36 @@
+version: 1.0.{build}
+image: Visual Studio 2013
+init:
+- ps: |
+  $ConnectionString = "Server=(local)\SQL2016;Database=master;User ID=sa;Password=$($env:SQL_SERVER_SA_PASSWORD)"
+  Invoke-SqlCmd -ConnectionString $ConnectionString -Query @' 
+  CREATE DATABASE ${env:SQL_SERVER_DATABASE};
+  GO
+  CREATE LOGIN ${env:SQL_SERVER_USER} WITH PASSWORD = '${env:SQL_SERVER_PASSWORD}';
+  GO
+  USE ${env:SQL_SERVER_DATABASE};
+  GO
+  CREATE USER ${env:SQL_SERVER_USER};
+  ALTER ROLE  db_owner  
+         ADD MEMBER ${env:SQL_SERVER_USER}; 
+  '@
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+environment:
+  SQL_SERVER_SA_PASSWORD: Password12!
+  SQL_SERVER_USER: AlwaysEncryptedOwner
+  SQL_SERVER_PASSWORD: 7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl
+  SQL_SERVER_DATABASE: AlwaysEncryptedSample
+  matrix:
+  - {}
+services: mssql2016
+before_build:
+- cmd: nuget restore
+build:
+  publish_wap: true
+  parallel: true
+  verbosity: minimal

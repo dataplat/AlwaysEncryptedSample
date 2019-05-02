@@ -1,6 +1,8 @@
 # Always Encrypted Sample Application
 
-[![CircleCI Build Status](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample.svg?style=shield)](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample) [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/master/License.md)
+[![CircleCI Build Status](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample.svg?style=shield)](https://circleci.com/gh/sqlcollaborative/AlwaysEncryptedSample)
+[![Appveyoy Build status](https://ci.appveyor.com/api/projects/status/avsqeqr09x2j6rq6?svg=true)](https://ci.appveyor.com/project/zippy1981/alwaysencryptedsample)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/master/License.md)
 
 This is a sample ASP.NET application that demonstrates Always Encrypted 
 features based on the Visual Studio 2013 Default ASP.NET MVC project.
