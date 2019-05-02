@@ -1,9 +1,11 @@
 version: 1.0.{build}
 image: Visual Studio 2013
 install:
-- ps: Get-Service *sql*
+#BEGIN DEBUG CODE
+- ps: Get-Service *sql* | Sort-Object Name | Format-List Name, DisplayName
 - cmd: set SQL
 - cmd: sqlcmd -L
+#END DEBUG CODE
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 assembly_info:
   patch: true
