@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1556722664">
+  <project timestamp="1556722664">
+    <package name="SqlCollaborative\AlwaysEncryptedSample\Command">
+      <file name="C:\Users\Justin Dearing\source\repos\AlwaysEncryptedSample\AlwaysEncryptedSample.PHP\src\Command\GenerateSSN.php">
+        <class name="SqlCollaborative\AlwaysEncryptedSample\Command\GenerateSSN" namespace="SqlCollaborative\AlwaysEncryptedSample\Command">
+          <metrics complexity="2" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="12" coveredelements="0"/>
+        </class>
+        <line num="14" type="method" name="configure" visibility="protected" complexity="1" crap="2.00" count="0"/>
+        <line num="15" type="stmt" count="0"/>
+        <line num="16" type="stmt" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="18" type="stmt" count="0"/>
+        <line num="19" type="stmt" count="0"/>
+        <line num="21" type="method" name="execute" visibility="protected" complexity="1" crap="2.00" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="23" type="stmt" count="0"/>
+        <line num="24" type="stmt" count="0"/>
+        <line num="25" type="stmt" count="0"/>
+        <line num="26" type="stmt" count="0"/>
+        <metrics loc="26" ncloc="26" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="0" elements="12" coveredelements="0"/>
+      </file>
+    </package>
+    <package name="SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler">
+      <file name="C:\Users\Justin Dearing\source\repos\AlwaysEncryptedSample\AlwaysEncryptedSample.PHP\src\Monolog\Handler\SqlServerHandler.php">
+        <class name="SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler\SqlServerHandler" namespace="SqlCollaborative\AlwaysEncryptedSample\Monolog\Handler">
+          <metrics complexity="6" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="29" coveredelements="29"/>
+        </class>
+        <line num="41" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="47" type="stmt" count="4"/>
+        <line num="49" type="stmt" count="4"/>
+        <line num="50" type="stmt" count="4"/>
+        <line num="51" type="stmt" count="4"/>
+        <line num="52" type="stmt" count="4"/>
+        <line num="58" type="stmt" count="4"/>
+        <line num="59" type="stmt" count="4"/>
+        <line num="61" type="method" name="setLoggerName" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="63" type="stmt" count="4"/>
+        <line num="64" type="stmt" count="4"/>
+        <line num="67" type="method" name="setPdoAttribute" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="69" type="stmt" count="4"/>
+        <line num="70" type="stmt" count="4"/>
+        <line num="78" type="method" name="setPdoErrorMode" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="80" type="stmt" count="4"/>
+        <line num="81" type="stmt" count="4"/>
+        <line num="88" type="method" name="setSqlInsert" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="90" type="stmt" count="4"/>
+        <line num="91" type="stmt" count="4"/>
+        <line num="93" type="stmt" count="4"/>
+        <line num="95" type="stmt" count="4"/>
+        <line num="104" type="method" name="write" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="108" type="stmt" count="1"/>
+        <line num="109" type="stmt" count="1"/>
+        <line num="110" type="stmt" count="1"/>
+        <line num="111" type="stmt" count="1"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="114" type="stmt" count="1"/>
+        <metrics loc="114" ncloc="74" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="23" coveredstatements="23" elements="29" coveredelements="29"/>
+      </file>
+    </package>
+    <package name="SqlCollaborative\AlwaysEncryptedSample\Security">
+      <file name="C:\Users\Justin Dearing\source\repos\AlwaysEncryptedSample\AlwaysEncryptedSample.PHP\src\Security\AspNetIdentity.php">
+        <class name="SqlCollaborative\AlwaysEncryptedSample\Security\AspNetIdentity" namespace="SqlCollaborative\AlwaysEncryptedSample\Security" fullPackage="SqlCollaborative" package="SqlCollaborative">
+          <metrics complexity="7" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="28" coveredelements="28"/>
+        </class>
+        <line num="22" type="method" name="generateRandomSalt" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="27" type="method" name="getPasswordSalt" visibility="public" complexity="3" crap="3" count="4"/>
+        <line num="29" type="stmt" count="4"/>
+        <line num="30" type="stmt" count="4"/>
+        <line num="31" type="stmt" count="4"/>
+        <line num="33" type="stmt" count="4"/>
+        <line num="34" type="stmt" count="4"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="54" type="method" name="hashPassword" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="56" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="62" type="stmt" count="1"/>
+        <line num="63" type="stmt" count="1"/>
+        <line num="66" type="stmt" count="1"/>
+        <line num="75" type="method" name="verifyHashedPassword" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="78" type="stmt" count="2"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <metrics loc="86" ncloc="58" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="24" coveredstatements="24" elements="28" coveredelements="28"/>
+      </file>
+    </package>
+    <package name="SqlCollaborative\AlwaysEncryptedSample\Util">
+      <file name="C:\Users\Justin Dearing\source\repos\AlwaysEncryptedSample\AlwaysEncryptedSample.PHP\src\Util\SSNGenerator.php">
+        <class name="SqlCollaborative\AlwaysEncryptedSample\Util\SSNGenerator" namespace="SqlCollaborative\AlwaysEncryptedSample\Util">
+          <metrics complexity="7" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="20" coveredelements="20"/>
+        </class>
+        <line num="14" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <line num="17" type="stmt" count="1"/>
+        <line num="19" type="method" name="initValidAreaGroups" visibility="private" complexity="2" crap="2" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="25" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <line num="31" type="method" name="generateAreaGroup" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="36" type="method" name="generateGroupNumber" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="41" type="method" name="generateSerialNumber" visibility="private" complexity="1" crap="1" count="1"/>
+        <line num="43" type="stmt" count="1"/>
+        <line num="46" type="method" name="generateSSN" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="49" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="52" type="stmt" count="1"/>
+        <metrics loc="54" ncloc="50" classes="1" methods="6" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="14" coveredstatements="14" elements="20" coveredelements="20"/>
+      </file>
+    </package>
+    <metrics files="4" loc="280" ncloc="208" classes="4" methods="18" coveredmethods="16" conditionals="0" coveredconditionals="0" statements="71" coveredstatements="61" elements="89" coveredelements="77"/>
+  </project>
+</coverage>
