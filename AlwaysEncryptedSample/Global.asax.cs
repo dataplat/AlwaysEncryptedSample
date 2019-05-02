@@ -1,6 +1,5 @@
 ﻿using System.Configuration;
 using System.Data;
-using System.Data.Common;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -51,6 +50,7 @@ namespace AlwaysEncryptedSample
                 }
                 catch (SqlException)
                 {
+                    //TODO: Send this exception somewhere.
                     return false;
                 }
             }
@@ -99,7 +99,7 @@ namespace AlwaysEncryptedSample
             }
             
             var log = log4net.LogManager.GetLogger(GetType());
-            log.InfoFormat("Calling Application_Start");
+            log.Info("Calling Application_Start");
             
             log.Debug("Performing Area Registration");
             AreaRegistration.RegisterAllAreas();
@@ -115,7 +115,7 @@ namespace AlwaysEncryptedSample
             using (var authDbCtx = AuthDbContext.Create())
             {
                 authDbCtx.Database.Log = (dbLog => log.Debug(dbLog));
-                log.Info("Initialization tests for Autorization Schema");
+                log.Info("Initialization tests for Authorization Schema");
                 if (!authDbCtx.Roles.Any())
                 {
                     log.Info("No roles found in database. Creating roles");
@@ -135,7 +135,7 @@ namespace AlwaysEncryptedSample
                         EmailConfirmed = true,
                         PasswordHash = userManager.PasswordHasher.HashPassword("Alm0nds!"),
                     });
-
+                    
                     userManager.AddToRole("Administrator", "DBAs");
 
                     userManager.Create(new ApplicationUser
