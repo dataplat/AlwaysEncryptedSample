@@ -1,7 +1,7 @@
 version: 1.0.{build}
 image: Visual Studio 2013
 install:
-- cmd: sqlcmd -S %SQL_SERVER_INSTANCE% -i .\appveyor\init.sql
+- cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -15,7 +15,8 @@ environment:
   SQL_SERVER_DATABASE: AlwaysEncryptedSample
   matrix:
   - {}
-services: mssql2016
+services: 
+- mssql2016
 before_build:
 - cmd: nuget restore
 build:
