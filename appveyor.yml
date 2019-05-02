@@ -3,6 +3,7 @@ image: Visual Studio 2015
 install:
 #BEGIN DEBUG CODE
 - ps: Get-Service *sql* | Sort-Object Name | Format-List Name, DisplayName, Status
+- ps: Start-Service 'MSSQL$SQL2016'
 - cmd: set SQL
 #END DEBUG CODE
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
