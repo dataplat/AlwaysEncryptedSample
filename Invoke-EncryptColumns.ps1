@@ -7,7 +7,7 @@ param(
 	[string] $ConnectionString = "Data Source=localhost,1433;Initial Catalog=AlwaysEncryptedSample;UID=sa;PWD=alwaysB3Encrypt1ng;Application Name=Encryption.ps1;Column Encryption Setting=enabled;",
 	[string] $AuthSchema = 'Authentication',
 	[string] $AppSchema = 'Purchasing',
-	[string] $LoggingSchema = 'Logging',
+	[string] $LogSchema = 'Logging',
 	[string] $AuthColumnKeyName = "AuthColumnsKey",
 	[string] $AppColumnKeyName = "AppColumnsKey",
 	[string] $LogColumnKeyName = "LogColumnsKey",
@@ -18,6 +18,7 @@ param(
 
 try {
 	$smoDatabase = Get-SqlDatabase -ConnectionString $ConnectionString
+	$smoDatabase.DefaultSchema = $null
 }
 catch {
 	Write-Error $_
@@ -27,19 +28,52 @@ catch {
 $encryptionChanges = @()
 
 # Change table [Authentication].[AspNetUsers]
-$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AuthSchema).AspNetUsers.SSN" -EncryptionType Randomized -EncryptionKey $AuthColumnKeyName
-
+if ($smoDatabase.ColumnEncryptionKeys[$AuthColumnKeyName].Length -Eq 0) {
+	Write-Warning "Authentication Column Encryption Key $AuthColumnKeyName does not exist."
+}
+elseif ($smoDatabase.Schemas[$AuthSchema].Length -eq 0) {
+	Write-Warning "Authentication Schema $AuthSchema does not exist."
+}
+else {
+	Write-Debug "Adding ColumnEncryptionSettings for Auth Column Key $AuthColumnKeyName."
+	$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AuthSchema).AspNetUsers.SSN" -EncryptionType Randomized -EncryptionKey $AuthColumnKeyName
+}
 
 # Change table [Purchasing].[CreditCards]
-$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AppSchema).CreditCards.CardNumber" -EncryptionType Randomized -EncryptionKey $AppColumnKeyName
-$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AppSchema).CreditCards.CCV" -EncryptionType Randomized -EncryptionKey $AppColumnKeyName
+if ($smoDatabase.ColumnEncryptionKeys[$AppColumnKeyName].Length -Eq 0) {
+	Write-Warning "Application Column Encryption Key $AppColumnKeyName does not exist."
+}
+elseif ($smoDatabase.Schemas[$AppSchema].Length -eq 0) {
+	Write-Warning "Application Schema $AppSchema does not exist."
+}
+else {
+	Write-Debug "Adding ColumnEncryptionSettings for App Column Key $AppColumnKeyName."
+	$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AppSchema).CreditCards.CardNumber" -EncryptionType Randomized -EncryptionKey $AppColumnKeyName
+	$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($AppSchema).CreditCards.CCV" -EncryptionType Randomized -EncryptionKey $AppColumnKeyName
+}
 
 # Change table [Logging].[Log]
-$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($LoggingSchema).Log.User" -EncryptionType Deterministic -EncryptionKey $LogColumnKeyName
-$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($LoggingSchema).Log.ClientIP" -EncryptionType Deterministic -EncryptionKey $LogColumnKeyName
+if ($smoDatabase.ColumnEncryptionKeys[$LogColumnKeyName].Length -Eq 0) {
+	Write-Warning "Logging Column Encryption Key $LogColumnKeyName does not exist."
+}
+elseif ($smoDatabase.Schemas[$LogSchema].Length -eq 0) {
+	Write-Warning "Logging Schema $LogSchema does not exist."
+}
+else {
+	Write-Debug "Adding ColumnEncryptionSettings for Log Column Key $LogColumnKeyName."
+	$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($LogSchema).Log.User" -EncryptionType Deterministic -EncryptionKey $LogColumnKeyName
+	$encryptionChanges += New-SqlColumnEncryptionSettings -ColumnName "$($LogSchema).Log.ClientIP" -EncryptionType Deterministic -EncryptionKey $LogColumnKeyName
+}
 
-Set-SqlColumnEncryption `
-    -ColumnEncryptionSettings $encryptionChanges `
-    -InputObject $smoDatabase `
-    -Script:$Script `
-    -LogFileDirectory $LogFileDirectory
+
+if ($encryptionChanges.Length -eq 0) {
+	Write-Warning "Could not find any column keys or schemas to encrypt."
+}
+else {
+	Write-Verbose "Applying Column Encryption to $($encryptionChanges.Length) column(s)."
+	Set-SqlColumnEncryption `
+		-ColumnEncryptionSettings $encryptionChanges `
+		-InputObject $smoDatabase `
+		-Script:$Script `
+		-LogFileDirectory $LogFileDirectory
+}

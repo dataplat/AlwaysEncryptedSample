@@ -56,3 +56,4 @@ New-SqlColumnMasterKey -Name $MasterKeySQLName -InputObject $smoDatabase -Column
         -ColumnMasterKey $MasterKeySQLName `
         -Name $_ | Out-Null
 }
+	
