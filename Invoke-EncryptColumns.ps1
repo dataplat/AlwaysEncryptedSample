@@ -18,7 +18,7 @@ param(
 
 try {
 	$smoDatabase = Get-SqlDatabase -ConnectionString $ConnectionString
-	$smoDatabase.DefaultSchema = $null
+	$smoDatabase.DefaultSchema = $null # If we don't do this Set-SqlColumnEncryption will not respect the schema set by New-SqlColumnEncryptionSettings
 }
 catch {
 	Write-Error $_
