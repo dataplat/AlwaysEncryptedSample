@@ -4,7 +4,7 @@
 
 [cmdletbinding()]
 param(
-	[string] $ConnectionString = "Data Source=localhost,1433;Initial Catalog=AlwaysEncryptedSample;UID=sa;PWD=alwaysB3Encrypt1ng;Application Name=Encryption.ps1;Column Encryption Setting=enabled;",
+	[Parameter(Mandatory = $true, ValueFromPipeline = $true)] [string] $ConnectionString,
 	[string] $MasterKeyDNSName = "CN=Always Encrypted Sample Cert",
 	[switch] $RemoveExistingCerts,
 	[string] $MasterKeySQLName = "AlwaysEncryptedSampleCMK",
