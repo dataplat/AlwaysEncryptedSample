@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AlwaysEncryptedSample.Properties {
+namespace AlwaysEncryptedSample.Models.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AlwaysEncryptedSample.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlwaysEncryptedSample.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AlwaysEncryptedSample.Models.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,26 +61,25 @@ namespace AlwaysEncryptedSample.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT
-        ///		QUOTENAME(DB_NAME()) + &apos;.&apos; + QUOTENAME(s.name) + &apos;.&apos; +
-        ///		QUOTENAME(t.name) AS FQTN,
-        ///		s.name AS [Schema],
-        ///		t.name AS [Table],
-        ///		c.name AS ColumnName,
-        ///		ct.name AS ColumnType,
-        ///		c.max_length AS Length,
-        ///		c.collation_name AS Collation,
-        ///		c.is_nullable AS Nullable,
-        ///		c.encryption_type_desc as EncryptionType,
-        ///		c.generated_always_type_desc AS GeneratedAlways
-        ///	FROM 
-        ///		sys.columns c
-        ///		INNER JOIN sys.types ct ON c.system_type_id = ct.system_type_id
-        ///		INNER JOIN sys.tables t ON c.object_id  [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to IF OBJECT_ID(&apos;[Logging].[Log]&apos;) IS NULL
+        ///BEGIN
+        ///	CREATE TABLE [Logging].[Log] (
+        ///		[Id] [int] IDENTITY (1, 1) NOT NULL
+        ///			CONSTRAINT PK_Log PRIMARY KEY  CLUSTERED,
+        ///		[Date] [datetime] NOT NULL,
+        ///		[Thread] [varchar] (255) NOT NULL,
+        ///		[Level] [varchar] (50) NOT NULL,
+        ///		[Logger] [varchar] (255) NOT NULL,
+        ///		[User] [nvarchar] (50) NULL,
+        ///		[ClientIP]
+        ///		    [nvarchar](45) -- Why 45? Because IPv6 Why Nvarchar? Because Log4Net
+        ///		    NULL,
+        ///		[Message] [varchar] (4000) NOT NULL,
+        ///		[Exception] [varchar] (200 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string EncryptedColumnsSQL {
+        internal static string Log4NetDDL {
             get {
-                return ResourceManager.GetString("EncryptedColumnsSQL", resourceCulture);
+                return ResourceManager.GetString("Log4NetDDL", resourceCulture);
             }
         }
     }

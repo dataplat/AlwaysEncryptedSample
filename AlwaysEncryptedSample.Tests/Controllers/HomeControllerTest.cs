@@ -1,8 +1,7 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AlwaysEncryptedSample.Controllers;
 
-namespace AlwaysEncryptedSample.Tests.Controllers
+namespace AlwaysEncryptedSample.Controllers
 {
     [TestClass]
     public class HomeControllerTest

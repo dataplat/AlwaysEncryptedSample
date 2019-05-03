@@ -1,5 +1,5 @@
 using System.Web.Mvc;
-using AlwaysEncryptedSample.Services;
+using AlwaysEncryptedSample.Models;
 using log4net;
 
 namespace AlwaysEncryptedSample.Controllers
@@ -7,7 +7,7 @@ namespace AlwaysEncryptedSample.Controllers
     public abstract class ControllerBase : Controller
     {
         protected ILog _log;
-        protected readonly ApplicationDbContext _appContext = new ApplicationDbContext();
+        protected readonly ApplicationDbContext _appContext = ApplicationDbContext.Create();
 
         protected ControllerBase()
         {

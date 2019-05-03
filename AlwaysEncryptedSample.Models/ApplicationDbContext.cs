@@ -1,16 +1,19 @@
-using AlwaysEncryptedSample.Models;
-using AlwaysEncryptedSample.Properties;
+using System.Data.Entity;
+using AlwaysEncryptedSample.Models.Properties;
 
-namespace AlwaysEncryptedSample.Services
+namespace AlwaysEncryptedSample.Models
 {
-    using System.Data.Entity;
- 
     public class ApplicationDbContext : DbContext
     {
         /// <remarks>Use DefaultConnection so we use one connection string for this and the ASP.NET authnetication.</remarks>
-        public ApplicationDbContext()
-            : base("name=DefaultConnection")
+        public ApplicationDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
         {
+        }
+
+        public static ApplicationDbContext Create(string nameOrConnectionString = "DefaultConnection")
+        {
+            return new ApplicationDbContext(nameOrConnectionString);
         }
 
         /// <remarks>We override this to set the schema.</remarks>
