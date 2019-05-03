@@ -22,7 +22,7 @@ environment:
 services: 
 - mssql2016
 before_build:
-- cmd: nuget restore -Verbosity NUGET_RESTORE_VERBOSITY
+- cmd: nuget restore -Verbosity %NUGET_RESTORE_VERBOSITY%
 build:
   publish_wap: true
   parallel: true
