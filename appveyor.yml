@@ -32,13 +32,12 @@ after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_DATABASE).bak' WITH FORMAT, COMPRESSION, STATS=10;"
   - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_DATABASE).bak") -Destination $env:APPVEYOR_BUILD_FOLDER -Verbose
-  - cmd: mkdir DDL_Scripts/
+  - cmd: mkdir DDL_Scripts
   - cmd: sqlpackage.exe /Action:Script /OutputPath:DDL_Scripts /SourceConnectionString:"%SQL_SERVER_CONNECTION_STRING%""
 artifacts:
   - path: $(SQL_SERVER_DATABASE).bak
     name: Database backup
     type: file
-  - path: DDL_Scripts/
+  - path: DDL_Scripts
     name: Database DDL
     type: zip
-  
