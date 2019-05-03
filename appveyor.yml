@@ -4,9 +4,7 @@ install:
 # the services: property below doesn't start services at this point so we must
 - ps: Start-Service 'MSSQL$SQL2016'
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-# Artifacts need to be relative to the build directory, so we're not writing the backup to the default folder.
-#- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
-- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=$env:APPVEYOR_BUILD_FOLDER
+- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -31,9 +29,10 @@ build:
 after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_DATABASE).bak' WITH FORMAT, COMPRESSION, STATS=10;"
+  - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY $(SQL_SERVER_DATABASE).bak) -Destination $env:APPVEYOR_BUILD_FOLDER
   # BEGIN DEBUG CODE 
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "SELECT DB_NAME(database_id), name as [FileName], type_desc, physical_name FROM master.sys.master_files;"
-
+  # Artifacts need to be relative to the build directory, so we're not writing the backup to the default folder.
   - ps: (Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
   # END DEBUG CODE
 artifacts:
