@@ -7,7 +7,6 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using AlwaysEncryptedSample.Models;
-using AlwaysEncryptedSample.Services;
 
 namespace AlwaysEncryptedSample
 {

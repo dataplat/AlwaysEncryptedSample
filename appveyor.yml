@@ -1,11 +1,8 @@
 version: 1.0.{build}
 image: Visual Studio 2015
 install:
-#BEGIN DEBUG CODE
-- ps: Get-Service *sql* | Sort-Object Name | Format-List Name, DisplayName, Status
+# the services: property below doesn't start services at this point so we must
 - ps: Start-Service 'MSSQL$SQL2016'
-- cmd: set SQL
-#END DEBUG CODE
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 assembly_info:
   patch: true
@@ -28,3 +25,9 @@ build:
   publish_wap: true
   parallel: true
   verbosity: minimal
+after_build:
+  - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
+  # BEGIN DEBUG CODE 
+  - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "SELECT DB_NAME(database_id), name as [FileName], type_desc, physical_name FROM master.sys.master_files;"
+  - ps: ls "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL*.*\MSSqlServer"
+  # END DEBUG CODE

@@ -1,4 +1,4 @@
-using AlwaysEncryptedSample.Services;
+using AlwaysEncryptedSample.Models;
 
 namespace AlwaysEncryptedSample.Migrations
 {
@@ -20,7 +20,7 @@ namespace AlwaysEncryptedSample.Migrations
         }
     }
 
-    internal sealed class AppConfiguration : DbMigrationsConfiguration<Services.ApplicationDbContext>
+    internal sealed class AppConfiguration : DbMigrationsConfiguration<ApplicationDbContext>
     {
         public AppConfiguration()
         {
