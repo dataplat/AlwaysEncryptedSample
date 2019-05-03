@@ -4,7 +4,7 @@ install:
 # the services: property below doesn't start services at this point so we must
 - ps: Start-Service 'MSSQL$SQL2016'
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- cmd: sqlpackage.exe /Action:Extract /TargetFile:"%SQL_SERVER_DACPAC%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE%
+#- cmd: sqlpackage.exe /Action:Extract /TargetFile:"%SQL_SERVER_DACPAC%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE%
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 assembly_info:
   patch: true
@@ -18,6 +18,7 @@ environment:
   SQL_SERVER_USER: AlwaysEncryptedOwner
   SQL_SERVER_PASSWORD: 7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl
   SQL_SERVER_DATABASE: AlwaysEncryptedSample
+  SQL_SERVER_BLANK_DATABASE: BlankDatabase
   SQL_SERVER_BACKUP_FILE: $(SQL_SERVER_DATABASE).bak
   SQL_SERVER_DACPAC: $(SQL_SERVER_DATABASE)_empty_database.dacpac
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
@@ -33,11 +34,12 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
-  - ps: .\appveyor\Start-EntityFrameworkMigration.ps1 -Verbose
-  - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -Q "SELECT QUOTENAME(s.name) + '.' + QUOTENAME(t.name) AS [Table Name] FROM sys.tables t INNER JOIN sys.schemas s ON s.schema_id = t.schema_id;"
+  - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
+  # I already know this database has schema
+  #- cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -Q "SELECT QUOTENAME(s.name) + '.' + QUOTENAME(t.name) AS [Table Name] FROM sys.tables t INNER JOIN sys.schemas s ON s.schema_id = t.schema_id;"
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
   - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_BACKUP_FILE)") -Destination $env:APPVEYOR_BUILD_FOLDER
-  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE% /TargetDatabaseName:%SQL_SERVER_DATABASE%
+  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE% /TargetServerName:"%SQL_SERVER_INSTANCE%" /TargetDatabaseName:%SQL_SERVER_BLANK_DATABASE%
 artifacts:
   - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
