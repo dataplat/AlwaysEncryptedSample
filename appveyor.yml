@@ -37,7 +37,7 @@ after_build:
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -Q "SELECT QUOTENAME(s.name) + '.' + QUOTENAME(t.name) AS [Table Name] FROM sys.tables t INNER JOIN sys.schemas s ON s.schema_id = t.schema_id;"
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
   - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_BACKUP_FILE)") -Destination $env:APPVEYOR_BUILD_FOLDER
-  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE% /TargetFile:%SQL_SERVER_DACPAC% /TargetDatabaseName:%SQL_SERVER_DATABASE%
+  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE% /TargetDatabaseName:%SQL_SERVER_DATABASE%
 artifacts:
   - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
