@@ -1,6 +1,6 @@
 [cmdletbinding()]
 param(
-	[Parameter(ValueFromPipeline = $true)] [string] $ConnectionString = "Data Source=$($env:SQL_SERVER_INSTANCE);Initial Catalog=$($env:SQL_SERVER_USER);UID=$($env:SQL_SERVER_USER);PWD=$($env:SQL_SERVER_PASSWORD);Application Name=Start-EntityFrameworkMigration;Column Encryption Setting=enabled"
+	[Parameter(ValueFromPipeline = $true)] [string] $ConnectionString = "Data Source=$($env:SQL_SERVER_INSTANCE);Initial Catalog=$($env:SQL_SERVER_DATABASE);UID=$($env:SQL_SERVER_USER);PWD=$($env:SQL_SERVER_PASSWORD);Application Name=Start-EntityFrameworkMigration;Column Encryption Setting=enabled"
 )
 
 <#
