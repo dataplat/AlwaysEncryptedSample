@@ -37,8 +37,8 @@ after_build:
 artifacts:
   - path: $(SQL_SERVER_DATABASE).bak
     name: Database backup
-    type: file 
-artifacts:
+    type: file
   - path: DDL_Scripts/
     name: Database DDL
     type: zip
+  
