@@ -73,9 +73,9 @@ namespace AlwaysEncryptedSample.Models.Properties {
         ///		[User] [nvarchar] (50) NULL,
         ///		[ClientIP]
         ///		    [nvarchar](45) -- Why 45? Because IPv6 Why Nvarchar? Because Log4Net
-        ///		    COLLATE  Latin1_General_BIN2
-        ///		    ENCRYPTED WITH (
-        ///		        COLUMN_ENCR [rest of string was truncated]&quot;;.
+        ///		    NULL,
+        ///		[Message] [varchar] (4000) NOT NULL,
+        ///		[Exception] [varchar] (200 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string Log4NetDDL {
             get {
