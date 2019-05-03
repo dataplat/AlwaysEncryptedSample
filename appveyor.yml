@@ -17,7 +17,8 @@ environment:
   SQL_SERVER_USER: AlwaysEncryptedOwner
   SQL_SERVER_PASSWORD: 7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl
   SQL_SERVER_DATABASE: AlwaysEncryptedSample
-  SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).bal
+  SQL_SERVER_BACKUP_FILE: $(SQL_SERVER_DATABASE).bak
+  SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
   SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);UID=$(SQL_SERVER_USER);PWD=$(SQL_SERVER_PASSWORD);Application Name=AppVeyor CI Process;Column Encryption Setting=enabled"
   matrix:
   - {}
@@ -31,12 +32,11 @@ build:
   verbosity: minimal
 after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
-  - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_DATABASE).bak' WITH FORMAT, COMPRESSION, STATS=10;"
-  - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_DATABASE).bak") -Destination $env:APPVEYOR_BUILD_FOLDER -Verbose
-  - cmd: mkdir DDL_Scripts
-  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA% /SourceConnectionString:"%SQL_SERVER_CONNECTION_STRING%"
+  - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
+  - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_BACKUP_FILE)") -Destination $env:APPVEYOR_BUILD_FOLDER
+  - cmd: sqlpackage.exe /Action:Script /OutputPath:"$(SQL_SERVER_GENERATED_SCHEMA)" /SourceConnectionString:"$(SQL_SERVER_CONNECTION_STRING)"
 artifacts:
-  - path: $(SQL_SERVER_DATABASE).bak
+  - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
     type: file
   - path: $(SQL_SERVER_GENERATED_SCHEMA)
