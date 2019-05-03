@@ -4,7 +4,9 @@ install:
 # the services: property below doesn't start services at this point so we must
 - ps: Start-Service 'MSSQL$SQL2016'
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
+# Artifacts need to be relative to the build directory, so we're not writing the backup to the default folder.
+#- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
+- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=$env:APPVEYOR_BUILD_FOLDER
 assembly_info:
   patch: true
   file: '**\AssemblyInfo.*'
@@ -35,6 +37,6 @@ after_build:
   - ps: (Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
   # END DEBUG CODE
 artifacts:
-- path: $(SQL_SERVER_BACKUP_DIRECTORY)\$(SQL_SERVER_DATABASE).bak
-  name: Database backup
-  type: file 
+  - path: $(SQL_SERVER_DATABASE).bak
+    name: Database backup
+    type: file 
