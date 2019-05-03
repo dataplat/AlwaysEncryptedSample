@@ -34,7 +34,7 @@ after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
   - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_BACKUP_FILE)") -Destination $env:APPVEYOR_BUILD_FOLDER
-  - cmd: sqlpackage.exe /Action:Script /OutputPath:"$(SQL_SERVER_GENERATED_SCHEMA)" /SourceConnectionString:"$(SQL_SERVER_CONNECTION_STRING)"
+  - cmd: sqlpackage.exe /Action:Script /OutputPath:"%SQL_SERVER_GENERATED_SCHEMA%" /SourceConnectionString:"%SQL_SERVER_CONNECTION_STRING%"
 artifacts:
   - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
