@@ -27,7 +27,8 @@ environment:
 services: 
 - mssql2016
 nuget:
-  account_feed: true
+  # This might be causing a hang.
+  # account_feed: true
   project_feed: true
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
