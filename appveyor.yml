@@ -4,7 +4,7 @@ install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 assembly_info:
   patch: true
-  file: '**\AssemblyInfo.*'
+  file: 'GlobalAssemblyInfo.cs'
   assembly_version: '{version}'
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
@@ -37,7 +37,8 @@ after_build:
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -i .\appveyor\schema_verification.sql -o %SQL_SERVER_VERIFICATION_LOG%
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
   - ps: Move-Item -Path (Join-Path $env:SQL_SERVER_BACKUP_DIRECTORY "$($env:SQL_SERVER_BACKUP_FILE)") -Destination $env:APPVEYOR_BUILD_FOLDER
-  - cmd: sqlpackage.exe /Action:Extract /TargetFile:"%SQL_SERVER_DACPAC%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE%  
+  - cmd: sqlpackage.exe /Action:Extract /TargetFile:"%SQL_SERVER_DACPAC%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE%
+  - cmd: git status
 artifacts:
   - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
