@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <!-- 
+      These variables can be set from amongst other places Assembly Attributes
+      https://docs.microsoft.com/en-us/nuget/reference/nuspec#replacement-tokens
+     -->
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>Justin Dearing</authors>
+    <owners>zippy1981</owners>
+    <licenseUrl>https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/master/License.md</licenseUrl>
+    <projectUrl>https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/</projectUrl>
+    <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <!--  <releaseNotes>Summary of changes made in this release of the package.</releaseNotes> -->
+    <copyright>$copyright$</copyright>
+    <tags>SqlServer AlwaysEncrypted SqlCollaborative</tags>
+  </metadata>
+</package>
