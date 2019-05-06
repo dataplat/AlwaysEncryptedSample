@@ -70,4 +70,7 @@ deploy:
     skip_symbols: false
     artifact: /.*\.nupkg/
     on:
-    branch: feature/nuget
+      branch: [
+        feature/nuget,
+        master
+      ]
