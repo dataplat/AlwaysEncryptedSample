@@ -1,4 +1,4 @@
-version: 1.0.{build}
+version: 0.1.{build}
 image: Visual Studio 2015
 install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
@@ -71,6 +71,5 @@ deploy:
     artifact: /.*\.nupkg/
     on:
       branch: [
-        feature/nuget,
         master
       ]
