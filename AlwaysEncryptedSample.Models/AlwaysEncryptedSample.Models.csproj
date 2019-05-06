@@ -126,6 +126,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AlwaysEncryptedSample.Models.nuspec" />
     <None Include="app.config" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
@@ -134,6 +135,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Readme.md" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
