@@ -36,6 +36,8 @@ before_build:
 - cmd: nuget install MSBuild.StructuredLogger -Version %MSBUILD_LOG_VERSION%  -SolutionDirectory . -Verbosity %NUGET_VERBOSITY%
 build:
   publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
   publish_wap: true
   parallel: true
   verbosity: minimal
