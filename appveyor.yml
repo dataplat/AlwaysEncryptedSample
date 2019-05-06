@@ -30,6 +30,8 @@ nuget:
   # This might be causing a hang.
   # account_feed: true
   project_feed: true
+cache:
+- packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
@@ -61,3 +63,11 @@ artifacts:
   - path: $(MSBUILD_LOG_FILE)
     name: MSBuild BInary Log
     type: file
+deploy:
+  - provider: NuGet
+    api_key:
+      secure: xiaaqhkzpM5TJP03w592QTLfxyWs2CBHS0KgDJ35m+Avtp1ARBs7QGjnnxbRnO1/
+    skip_symbols: false
+    artifact: /.*\.nupkg/
+    on:
+    branch: feature/nuget
