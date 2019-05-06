@@ -52,6 +52,7 @@ dlldata.c
 *.pgc
 *.pgd
 *.rsp
+!msbuild.rsp
 *.sbr
 *.tlb
 *.tli
