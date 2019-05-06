@@ -9,6 +9,8 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 environment:
+  MSBUILD_LOG_VERSION: 2.0.94
+  MSBUILD_LOG_FILE: msbuild.binlog
   NUGET_RESTORE_VERBOSITY: quiet
   SQL_SERVER_INSTANCE: (local)\SQL2016
   SQL_SERVER_USER: AlwaysEncryptedOwner
@@ -27,6 +29,7 @@ services:
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 - cmd: nuget restore -Verbosity %NUGET_RESTORE_VERBOSITY%
+- nuget install MSBuild.StructuredLogger -Version %MSBUILD_LOG_VERSION%  -SolutionDirectory .
 build:
   publish_nuget: true
   publish_wap: true
@@ -48,4 +51,7 @@ artifacts:
     type: file
   - path: $(SQL_SERVER_VERIFICATION_LOG)
     name: Verifiction Query Results
+    type: file
+  - path: $(MSBUILD_LOG_FILE)
+    name: MSBuild BInary Log
     type: file

@@ -5,4 +5,6 @@
 # We just want errors displayed
 /ConsoleLoggerParameters:NoSummary;Verbosity=quiet
 # Binary logger **WARNING** This is going to expose secrets in envirnment variables.
-/bl
+/logger:BinaryLogger,".\packages\MSBuild.StructuredLogger.%MSBUILD_LOG_VERSION%\lib\net46\StructuredLogger.dll";".\%MSBUILD_LOG_FILE%"
+# Requires MSBuild 15.3 or later to use simplifies  binlog
+#/bl
