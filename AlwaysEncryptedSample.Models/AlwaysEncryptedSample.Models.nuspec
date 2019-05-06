@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>AlwaysEncryptedSampleTitle.Models</id>
-    <version>0.1</version>
+    <id>$id$</id>
+    <version>$version$</version>
     <authors>Justin Dearing</authors>
-    <owners>Zippy1981</owners>
+    <owners>zippy1981</owners>
     <licenseUrl>https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/master/License.md</licenseUrl>
     <projectUrl>https://raw.githubusercontent.com/sqlcollaborative/AlwaysEncryptedSample/</projectUrl>
     <!-- <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl> -->
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <!--  <description>$description$</description> -->
+    <description>$description$</description>
     <!--  <releaseNotes>Summary of changes made in this release of the package.</releaseNotes> -->
-    <copyright>Copyright 2019</copyright>
+    <copyright>$copyright$</copyright>
     <tags>SqlServer AlwaysEncrypted SqlCollaborative</tags>
   </metadata>
 </package>

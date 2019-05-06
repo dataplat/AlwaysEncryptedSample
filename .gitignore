@@ -199,3 +199,6 @@ ModelManifest.xml
 
 #Docker stuff
 volumes/
+
+#Nuget publish
+*.nupkg
