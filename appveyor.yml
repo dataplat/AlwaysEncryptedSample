@@ -28,6 +28,7 @@ before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
 - cmd: nuget restore -Verbosity %NUGET_RESTORE_VERBOSITY%
 build:
+  publish_nuget: true
   publish_wap: true
   parallel: true
   verbosity: minimal
