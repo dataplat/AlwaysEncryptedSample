@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 namespace AlwaysEncryptedSample.Models
 {
-    public abstract class AbstractModelClass
+    public abstract class AbstractModelTests
     {
         [OneTimeSetUp]
         public void Setup()
@@ -14,6 +14,16 @@ namespace AlwaysEncryptedSample.Models
             DbInit.CreateAuthContext();
             DbInit.CreatePurchasingContext();
             DbInit.InitLog4NetDb(new SqlConnection());
+        }
+    }
+
+    [TestFixture]
+    public class ApplicationUserTests : AbstractModelTests
+    {
+        [Test]
+        public void TestFail()
+        {
+            Assert.Fail("It's a good thing I got this far.");
         }
     }
 }

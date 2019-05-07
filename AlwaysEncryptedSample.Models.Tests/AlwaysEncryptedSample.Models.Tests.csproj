@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractModelClass.cs" />
+    <Compile Include="AbstractModelTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
