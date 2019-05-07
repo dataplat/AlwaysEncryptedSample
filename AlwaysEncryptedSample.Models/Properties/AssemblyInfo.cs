@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
@@ -9,3 +10,5 @@ using System.Runtime.InteropServices;
 
 [assembly: ComVisible(false)]
 [assembly: Guid("6f9599eb-3c9a-45ad-a081-30f83946d63c")]
+
+[assembly:InternalsVisibleTo("AlwaysEncryptedSample.Models.Tests")]

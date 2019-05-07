@@ -8,7 +8,9 @@ namespace AlwaysEncryptedSample.Models
     {
         public CreditCard()
         {
-            ModifiedDate = DateTime.Now;
+            //TODO: This is probably completely broken an needs tests to prove out.
+            //Need to force this field modified to DateTime.Now every send.  
+            ModifiedDate = DateTime.UtcNow;
         }
 
         [Key]
@@ -24,6 +26,7 @@ namespace AlwaysEncryptedSample.Models
         [Required]
         public short ExpYear { get; set; }
         [Required]
+        // ReSharper disable once InconsistentNaming
         public short CCV { get; set; }
         [Required]
         public DateTime ModifiedDate { get; set; }

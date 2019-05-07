@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Reflection;
@@ -25,44 +26,49 @@ namespace AlwaysEncryptedSample.Models
         {
             using (var authDbCtx = AuthDbContext.Create(nameOrConnectionString))
             {
-                authDbCtx.Database.Log = (dbLog => log.Debug(dbLog));
-                log.Info("Initialization tests for Authorization Schema");
-                if (!authDbCtx.Roles.Any())
-                {
-                    log.Info("No roles found in database. Creating roles");
-                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(authDbCtx));
-                    roleManager.Create(new IdentityRole("DBAs")); // Gives database internals access
-                    roleManager.Create(new IdentityRole("Credit Card Admins")); // Gives access to CC info
-                }
-
-                if (!authDbCtx.Users.Any())
-                {
-                    log.Info("No users found in database. Creating users");
-                    var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(authDbCtx));
-                    userManager.Create(new ApplicationUser
-                    {
-                        Id = "Administrator",
-                        Email = "no-reply+admin@microsoft.com",
-                        UserName = "Administrator",
-                        EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("Alm0nds!"),
-                    });
-
-                    userManager.AddToRole("Administrator", "DBAs");
-
-                    userManager.Create(new ApplicationUser
-                    {
-                        Email = "no-reply+creditcard@microsoft.com",
-                        Id = "CCAdmin",
-                        UserName = "CCAdmin",
-                        EmailConfirmed = true,
-                        PasswordHash = userManager.PasswordHasher.HashPassword("Appl3s")
-                    });
-                    userManager.AddToRole("CCAdmin", "Credit Card Admins");
-                }
-
-                authDbCtx.SaveChanges();
+                InitDbContext(authDbCtx);
             }
+        }
+
+        private static void InitDbContext(AuthDbContext authDbCtx)
+        {
+            authDbCtx.Database.Log = (dbLog => log.Debug(dbLog));
+            log.Info("Initialization tests for Authorization Schema");
+            if (!authDbCtx.Roles.Any())
+            {
+                log.Info("No roles found in database. Creating roles");
+                var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(authDbCtx));
+                roleManager.Create(new IdentityRole("DBAs")); // Gives database internals access
+                roleManager.Create(new IdentityRole("Credit Card Admins")); // Gives access to CC info
+            }
+
+            if (!authDbCtx.Users.Any())
+            {
+                log.Info("No users found in database. Creating users");
+                var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(authDbCtx));
+                userManager.Create(new ApplicationUser
+                {
+                    Id = "Administrator",
+                    Email = "no-reply+admin@microsoft.com",
+                    UserName = "Administrator",
+                    EmailConfirmed = true,
+                    PasswordHash = userManager.PasswordHasher.HashPassword("Alm0nds!"),
+                });
+
+                userManager.AddToRole("Administrator", "DBAs");
+
+                userManager.Create(new ApplicationUser
+                {
+                    Email = "no-reply+creditcard@microsoft.com",
+                    Id = "CCAdmin",
+                    UserName = "CCAdmin",
+                    EmailConfirmed = true,
+                    PasswordHash = userManager.PasswordHasher.HashPassword("Appl3s")
+                });
+                userManager.AddToRole("CCAdmin", "Credit Card Admins");
+            }
+
+            authDbCtx.SaveChanges();
         }
 
         /// <summary>
