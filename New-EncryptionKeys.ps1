@@ -30,7 +30,7 @@ if ($RemoveExistingCerts) {
         Remove-SqlColumnEncryptionKey -Name $_.Name -InputObject $smoDatabase
     }
     Remove-SqlColumnMasterKey -Name $MasterKeySQLName -InputObject $smoDatabase
-	ls Cert:\CurrentUser\My |  where subject -eq $MasterKeyDNSName | rm
+	Get-ChildItem Cert:\CurrentUser\My |  Where-Object subject -eq $MasterKeyDNSName | Remove-Item
 }
 
 $cert = New-SelfSignedCertificate `

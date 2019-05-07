@@ -16,11 +16,10 @@ environment:
   SQL_SERVER_USER: AlwaysEncryptedOwner
   SQL_SERVER_PASSWORD: 7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl
   SQL_SERVER_DATABASE: AlwaysEncryptedSample
-  SQL_SERVER_BLANK_DATABASE: BlankDatabase
   SQL_SERVER_BACKUP_FILE: $(SQL_SERVER_DATABASE).bak
   SQL_SERVER_DACPAC: $(SQL_SERVER_DATABASE).dacpac
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
-  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);UID=$(SQL_SERVER_USER);PWD=$(SQL_SERVER_PASSWORD);Application Name=AppVeyor CI Process;Column Encryption Setting=enabled"
+  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);UID=$(SQL_SERVER_USER);PWD=$(SQL_SERVER_PASSWORD);Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
   SQL_SERVER_VERIFICATION_LOG: $(SQL_SERVER_DATABASE).verification.log
   matrix:
   - {}
