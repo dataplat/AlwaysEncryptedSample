@@ -35,9 +35,9 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- ps: Install-Module sqlserver -Scope CurrentUser -AllowClobber -Verbose
+- ps: Install-Module sqlserver -Scope CurrentUser -AllowClobber
 - ps: Write-Host $env:SQL_SERVER_CONNECTION_STRING
-- ps: Get-Module sqlserver | select -ExpandProperty ExportedCommands
+- ps: Get-Module -ListAvailable sqlserver | select -ExpandProperty ExportedCommands
 - ps: .\New-EncryptionKeys.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
 - ps: .\Invoke-EncryptColumns.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
