@@ -5,7 +5,8 @@ install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 - ps: Get-Command -type cmdlet  New-SelfSignedCertificate | select *
 - ps: (Get-Command -type cmdlet  New-SelfSignedCertificate).MOduleName | Get-Module |Select Name, Path, PowershellVersion, Guid
-- ps: help New-SelfSignedCertificate
+- ps: Update-Help PKI
+- ps: Get-help New-SelfSignedCertificate -Full
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
@@ -68,7 +69,7 @@ artifacts:
   - path: $(SQL_SERVER_VERIFICATION_LOG)
     name: Verifiction Query Results
     type: file
-  # Its not the best idea to use a self 
+  # There is little advantage of using
   - path: $(SQL_SERVER_COLUMN_MASTER_KEY_FILE)
     name: Column Master Key Certificate
     type: file
