@@ -20,7 +20,7 @@ environment:
   SQL_SERVER_BACKUP_FILE: $(SQL_SERVER_DATABASE).bak
   SQL_SERVER_DACPAC: $(SQL_SERVER_DATABASE).dacpac
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
-  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);Trusted Connection=SSPI;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
+  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);IntegratedSecurity=SSPI;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
   SQL_SERVER_VERIFICATION_LOG: $(SQL_SERVER_DATABASE).verification.log
   SQL_SERVER_COLUMN_MASTER_KEY_FILE: AlwaysEncryptedSampleCMK.cer
   matrix:
@@ -64,6 +64,7 @@ artifacts:
   - path: $(SQL_SERVER_VERIFICATION_LOG)
     name: Verifiction Query Results
     type: file
+  # Its not the best idea to use a self 
   - path: $(SQL_SERVER_COLUMN_MASTER_KEY_FILE)
     name: Column Master Key Certificate
     type: file
