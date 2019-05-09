@@ -1,12 +1,7 @@
 version: 0.1.{build}
 image: Visual Studio 2015
 install:
-- ps: New-Object -TypeName PsCustomObject  -Property $PSVersionTable
-- ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
-- ps: Get-Command -type cmdlet  New-SelfSignedCertificate | select *
-- ps: (Get-Command -type cmdlet  New-SelfSignedCertificate).MOduleName | Get-Module |Select Name, Path, PowershellVersion, Guid
-- ps: Update-Help PKI
-- ps: Get-help New-SelfSignedCertificate -Full
+- ps: Import-Certificate .\AlwaysEncryptedSampleCMK.cer -CertStoreLocation Cert:\CurrentUser\My -Verbose
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
@@ -16,7 +11,6 @@ assembly_info:
 environment:
   MSBUILD_LOG_VERSION: 2.0.94
   MSBUILD_LOG_FILE: msbuild.binlog
-  MSBUILD_VERBOSITY: minimal
   NUGET_VERBOSITY: quiet
   SQL_SERVER_INSTANCE: (local)\SQL2016
   SQL_SERVER_USER: AlwaysEncryptedOwner
@@ -51,7 +45,7 @@ build:
   include_nuget_references: true
   publish_wap: true
   parallel: true
-  verbosity: $(MSBUILD_VERBOSITY)
+  verbosity: minimal
 after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -i .\appveyor\schema_verification.sql -o %SQL_SERVER_VERIFICATION_LOG%
