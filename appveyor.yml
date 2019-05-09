@@ -2,6 +2,8 @@ version: 0.1.{build}
 image: Visual Studio 2015
 install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
+# The Visual Studio 2015 Imge doesn't have the newer version of New-SelfSignedCertificate with the paramaters I need to call.
+# For now I'm restoring a password protected pfx. Yes this is an issue for secrets management, I'll addres in the near future.
 - ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -CertStoreLocation "Cert:\CurrentUser\My" -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText) | Out-Null
 assembly_info:
   patch: true
@@ -35,9 +37,8 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
+# See here regarding -AboutClobber https://dba.stackexchange.com/a/174717/1817
 - ps: Install-Module sqlserver -Scope CurrentUser -AllowClobber
-- ps: Write-Host $env:SQL_SERVER_CONNECTION_STRING
-- ps: Get-Module -ListAvailable sqlserver | select -ExpandProperty ExportedCommands
 - ps: .\New-EncryptionKeys.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
 - ps: .\Invoke-EncryptColumns.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
@@ -66,7 +67,6 @@ artifacts:
   - path: $(SQL_SERVER_VERIFICATION_LOG)
     name: Verifiction Query Results
     type: file
-  # There is little advantage of using
   - path: $(SQL_SERVER_COLUMN_CERTIFICATE).cer
     name: Column Master Key Certificate
     type: file
