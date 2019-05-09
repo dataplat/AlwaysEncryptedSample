@@ -57,7 +57,7 @@ if ($ExportCertificate) {
 		Export-Certificate -FilePath "$($MasterKeySQLName).cer" | Out-Null
 }
 
-if($smoDatabase | Get-SqlColumnMasterKey -Name $MasterKeySQLName) {
+if($smoDatabase.ColumnMasterKeys['AlwaysEncryptedSampleCMK']) {
 	Write-Warning "Master Key Reference $($MasterKeySQLName) already exists in the database."
 }
 else {
@@ -69,9 +69,9 @@ else {
 	New-SqlColumnMasterKey -Name $MasterKeySQLName -InputObject $smoDatabase -ColumnMasterKeySettings $cmkSettings | Out-Null
 }
 
-$ExistingColumnKeys = $smoDatabase | Get-SqlColumnEncryptionKey 
+$ExistingColumnKeys = $smoDatabase.ColumnEncryptionKeys 
 @($AuthColumnKeyName, $AppColumnKeyName, $LogColumnKeyName) | ForEach-Object {
-	if ($ExistingColumnKeys | Where-Object Name -Eq $_) {
+	if ($ExistingColumnKeys[$_]) {
 		Write-Warning "Column Encryption Key already $_ exists."
 	}
 	else {
