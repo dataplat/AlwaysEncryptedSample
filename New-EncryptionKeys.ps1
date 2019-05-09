@@ -8,6 +8,7 @@ param(
 	[string] $MasterKeyDNSName = "CN=Always Encrypted Sample Cert",
 	[switch] $RemoveExistingCerts,
 	[switch] $ExportCertificate,
+	[switch] $ExportCertificateKeys,
 	[string] $MasterKeySQLName = "AlwaysEncryptedSampleCMK",
 	[string] $AuthColumnKeyName = "AuthColumnsKey",
 	[string] $AppColumnKeyName = "AppColumnsKey",
@@ -55,6 +56,12 @@ if ($ExportCertificate) {
 	Get-ChildItem Cert:\CurrentUser\My | 
 		Where-Object subject -eq "CN=Always Encrypted Sample Cert" | 
 		Export-Certificate -FilePath "$($MasterKeySQLName).cer" | Out-Null
+}
+
+if ($ExportCertificateKeys) {
+	Get-ChildItem Cert:\CurrentUser\My | 
+		Where-Object subject -eq "CN=Always Encrypted Sample Cert" | 
+		Export-PfxCertificate -FilePath "$($MasterKeySQLName).pfx" -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText) | Out-Null
 }
 
 if($smoDatabase.ColumnMasterKeys['AlwaysEncryptedSampleCMK']) {

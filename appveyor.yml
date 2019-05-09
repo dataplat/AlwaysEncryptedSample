@@ -2,7 +2,7 @@ version: 0.1.{build}
 image: Visual Studio 2015
 install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
-- ps: Import-Certificate .\AlwaysEncryptedSampleCMK.cer -CertStoreLocation Cert:\CurrentUser\My -Verbose
+- ps: Import-PfxCertificate -FilePath $($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText)
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
@@ -22,7 +22,7 @@ environment:
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
   SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);Integrated Security=SSPI;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
   SQL_SERVER_VERIFICATION_LOG: $(SQL_SERVER_DATABASE).verification.log
-  SQL_SERVER_COLUMN_MASTER_KEY_FILE: AlwaysEncryptedSampleCMK.cer
+  SQL_SERVER_COLUMN_MASTER_KEY_FILE: AlwaysEncryptedSampleCMK.pfx
   matrix:
   - {}
 services: 
@@ -35,7 +35,7 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- ps: Install-Module sqlserver -Scope CurrentUser -AllowClobber
+- ps: Install-Module sqlsgit erver -Scope CurrentUser -AllowClobber
 - ps: Write-Host $env:SQL_SERVER_CONNECTION_STRING
 - ps: Get-Module -ListAvailable sqlserver | select -ExpandProperty ExportedCommands
 - ps: .\New-EncryptionKeys.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
@@ -67,7 +67,7 @@ artifacts:
     name: Verifiction Query Results
     type: file
   # There is little advantage of using
-  - path: $(SQL_SERVER_COLUMN_MASTER_KEY_FILE)
+  - path: $($env:SQL_SERVER_COLUMN_CERTIFICATE).cer
     name: Column Master Key Certificate
     type: file
   - path: $(MSBUILD_LOG_FILE)
