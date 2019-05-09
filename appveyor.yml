@@ -1,9 +1,11 @@
 version: 0.1.{build}
 image: Visual Studio 2015
 install:
+- ps: New-Object -TypeName PsCustomObject  -Property $PSVersionTable
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 - ps: Get-Command -type cmdlet  New-SelfSignedCertificate | select *
-- ps: (Get-Command -type cmdlet  New-SelfSignedCertificate).MOduleName | Get-Module |Select Name, Path
+- ps: (Get-Command -type cmdlet  New-SelfSignedCertificate).MOduleName | Get-Module |Select Name, Path, PowershellVersion, Guid
+- ps: help New-SelfSignedCertificate
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
