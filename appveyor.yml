@@ -2,7 +2,7 @@ version: 0.1.{build}
 image: Visual Studio 2015
 install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
-- ps: Import-PfxCertificate -FilePath $($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText)
+- ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText)
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
@@ -67,7 +67,7 @@ artifacts:
     name: Verifiction Query Results
     type: file
   # There is little advantage of using
-  - path: $($env:SQL_SERVER_COLUMN_CERTIFICATE).cer
+  - path: $(SQL_SERVER_COLUMN_CERTIFICATE).cer
     name: Column Master Key Certificate
     type: file
   - path: $(MSBUILD_LOG_FILE)
