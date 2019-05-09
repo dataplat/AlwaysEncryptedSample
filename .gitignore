@@ -351,3 +351,6 @@ MigrationBackup/
 
 #Docker stuff
 volumes/
+
+# Certificates exported by New-EncryptionKeys
+*.cer

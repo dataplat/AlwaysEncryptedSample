@@ -12,7 +12,7 @@ param(
 	[string] $AppColumnKeyName = "AppColumnsKey",
 	[string] $LogColumnKeyName = "LogColumnsKey",
     [switch] $Script,
-    [string] $LogFileDirectory = "$pwd"
+    [string] $LogFileDirectory = $pwd
 
 )
 
