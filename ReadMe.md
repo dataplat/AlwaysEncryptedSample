@@ -39,10 +39,15 @@ ALTER ROLE  db_owner
        ADD MEMBER AlwaysEncryptedOwner;
 ```
 
-Initially the columns are not encrypted. To encrypt them run the included
-`Encryption.ps1`. This script supports the `-Debug` and `-Verbose` parameters
-This will create a self signed certificate in your user script repository and
-encrypt all the appropriate columns.
+Initially the columns are not encrypted. To encrypt them run the included powershell scripts.
+These script supports the `-Debug` and `-Verbose` parameters.
+This will create a self signed certificate in your user script repository and encrypt all the appropriate columns.
+
+```PowerShell
+$ConnectionString = 'Data Source=localhost,1433;Initial Catalog=AlwaysEncryptedSample;UID=AlwaysEncryptedOwner;PWD=7aO!z@xUu!4r6EvD#D&l$sz6&h^rhxL6fzAHMpnOga@LO*WdsEdpfh4^Egtl;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled'
+.\New-EncryptionKeys.ps1 $ConnectionString -ExportCertificate
+.\Invoke-EncryptColumns.ps1 -ConnectionString $ConnectionString
+```
 
 ## Schemas
 

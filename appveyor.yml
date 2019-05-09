@@ -11,6 +11,7 @@ assembly_info:
 environment:
   MSBUILD_LOG_VERSION: 2.0.94
   MSBUILD_LOG_FILE: msbuild.binlog
+  MSBUILD_VERBOSITY: minimal
   NUGET_VERBOSITY: quiet
   SQL_SERVER_INSTANCE: (local)\SQL2016
   SQL_SERVER_USER: AlwaysEncryptedOwner
@@ -19,8 +20,9 @@ environment:
   SQL_SERVER_BACKUP_FILE: $(SQL_SERVER_DATABASE).bak
   SQL_SERVER_DACPAC: $(SQL_SERVER_DATABASE).dacpac
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
-  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);UID=$(SQL_SERVER_USER);PWD=$(SQL_SERVER_PASSWORD);Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
+  SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);Trusted Connection=SSPI;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
   SQL_SERVER_VERIFICATION_LOG: $(SQL_SERVER_DATABASE).verification.log
+  SQL_SERVER_COLUMN_MASTER_KEY_FILE: AlwaysEncryptedSampleCMK.cer
   matrix:
   - {}
 services: 
@@ -33,6 +35,8 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
+- ps: .\New-EncryptionKey.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
+- ps: .\Invoke-EncryptColumns.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
 - cmd: nuget install MSBuild.StructuredLogger -Version %MSBUILD_LOG_VERSION%  -SolutionDirectory . -Verbosity %NUGET_VERBOSITY%
 build:
@@ -41,7 +45,7 @@ build:
   include_nuget_references: true
   publish_wap: true
   parallel: true
-  verbosity: minimal
+  verbosity: $(MSBUILD_VERBOSITY)
 after_build:
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -i .\appveyor\schema_verification.sql -o %SQL_SERVER_VERIFICATION_LOG%
@@ -58,6 +62,9 @@ artifacts:
     type: file
   - path: $(SQL_SERVER_VERIFICATION_LOG)
     name: Verifiction Query Results
+    type: file
+  - path: $(SQL_SERVER_COLUMN_MASTER_KEY_FILE)
+    name: Column Master Key Certificate
     type: file
   - path: $(MSBUILD_LOG_FILE)
     name: MSBuild BInary Log
