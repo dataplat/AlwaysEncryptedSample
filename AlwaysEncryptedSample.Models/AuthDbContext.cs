@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Data.Entity;
 using AlwaysEncryptedSample.Models.Properties;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -8,6 +9,12 @@ namespace AlwaysEncryptedSample.Models
     {
         public AuthDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString, throwIfV1Schema: true)
+        {
+        }
+
+        /// <remarks>Constructor for unit testing.</remarks>
+        internal AuthDbContext(DbConnection connection)
+            : base(connection, false)
         {
         }
 

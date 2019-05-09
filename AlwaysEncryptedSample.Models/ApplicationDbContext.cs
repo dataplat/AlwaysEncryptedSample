@@ -1,3 +1,4 @@
+using System.Data.Common;
 using System.Data.Entity;
 using AlwaysEncryptedSample.Models.Properties;
 
@@ -5,9 +6,15 @@ namespace AlwaysEncryptedSample.Models
 {
     public class ApplicationDbContext : DbContext
     {
-        /// <remarks>Use DefaultConnection so we use one connection string for this and the ASP.NET authnetication.</remarks>
+        /// <remarks>Use DefaultConnection so we use one connection string for this and the ASP.NET authentication.</remarks>
         public ApplicationDbContext(string nameOrConnectionString)
             : base(nameOrConnectionString)
+        {
+        }
+
+        /// <remarks>Constructor for unit testing.</remarks>
+        internal ApplicationDbContext(DbConnection connection)
+            : base(connection, false)
         {
         }
 
