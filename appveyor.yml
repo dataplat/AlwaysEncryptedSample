@@ -2,7 +2,7 @@ version: 0.1.{build}
 image: Visual Studio 2015
 install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
-- ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -CertStoreLocation "Cert:\CurrentUser\My" -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText)
+- ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -CertStoreLocation "Cert:\CurrentUser\My" -Password (ConvertTo-SecureString -String "1234" -Force -AsPlainText) | Out-Null
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
@@ -35,7 +35,7 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- ps: Install-Module sqlsgit erver -Scope CurrentUser -AllowClobber
+- ps: Install-Module sqlserver -Scope CurrentUser -AllowClobber
 - ps: Write-Host $env:SQL_SERVER_CONNECTION_STRING
 - ps: Get-Module -ListAvailable sqlserver | select -ExpandProperty ExportedCommands
 - ps: .\New-EncryptionKeys.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
