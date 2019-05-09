@@ -35,7 +35,7 @@ cache:
 - packages -> **\packages.config
 before_build:
 - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -i .\appveyor\init.sql
-- ps: .\New-EncryptionKey.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
+- ps: .\New-EncryptionKeys.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING -ExportCertificate
 - ps: .\Invoke-EncryptColumns.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
 - cmd: nuget install MSBuild.StructuredLogger -Version %MSBUILD_LOG_VERSION%  -SolutionDirectory . -Verbosity %NUGET_VERBOSITY%
