@@ -4,7 +4,7 @@ install:
 - ps: $env:SQL_SERVER_BACKUP_DIRECTORY=(Get-ItemProperty "HKLM:\Software\Microsoft\Microsoft SQL Server\MSSQL13.SQL2016\MSSqlServer").BackupDirectory
 # The Visual Studio 2015 Imge doesn't have the newer version of New-SelfSignedCertificate with the paramaters I need to call.
 # For now I'm restoring a password protected pfx. Yes this is an issue for secrets management, I'll addres in the near future.
-- ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -CertStoreLocation "Cert:\CurrentUser\My" -Password (ConvertTo-SecureString -String "$env:PFX_PASSWORD -Force -AsPlainText) | Out-Null
+- ps: Import-PfxCertificate -FilePath "$($env:SQL_SERVER_COLUMN_CERTIFICATE).pfx" -CertStoreLocation "Cert:\CurrentUser\My" -Password (ConvertTo-SecureString -String "$env:PFX_PASSWORD" -Force -AsPlainText) | Out-Null
 assembly_info:
   patch: true
   file: 'GlobalAssemblyInfo.cs'
