@@ -22,7 +22,7 @@ environment:
   SQL_SERVER_GENERATED_SCHEMA: $(SQL_SERVER_DATABASE).sql
   SQL_SERVER_CONNECTION_STRING: "Data Source=$(SQL_SERVER_INSTANCE);Initial Catalog=$(SQL_SERVER_DATABASE);Integrated Security=SSPI;Application Name=AppVeyor CI Process;Column Encryption Setting=Enabled"
   SQL_SERVER_VERIFICATION_LOG: $(SQL_SERVER_DATABASE).verification.log
-  SQL_SERVER_COLUMN_MASTER_KEY_FILE: AlwaysEncryptedSampleCMK.pfx
+  SQL_SERVER_COLUMN_CERTIFICATE: AlwaysEncryptedSampleCMK
   matrix:
   - {}
 services: 
