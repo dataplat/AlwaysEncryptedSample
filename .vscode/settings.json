@@ -1,0 +1,20 @@
+{
+    "editor.renderWhitespace": "all",
+    "editor.renderControlCharacters": true,
+    "omnisharp.projectLoadTimeout": 120,
+    "files.autoGuessEncoding": true,
+    "files.encoding": "utf8bom",
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "powershell.helpCompletion": "BlockComment",
+    "powershell.debugging.createTemporaryIntegratedConsole": true,
+    "powershell.scriptAnalysis.enable": true,
+    "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "[powershell]": {
+        "editor.autoIndent": true,
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 4
+    }
+}
