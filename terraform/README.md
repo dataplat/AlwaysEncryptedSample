@@ -14,3 +14,7 @@ terraform init
 terraform plan
 terraform apply
 ```
+
+## Cleaning up
+
+If you don't want to rack of charges then the command is `az group delete --name AlwaysEncryptedSample`
