@@ -11,6 +11,11 @@ variable "resource_location" {
   default = "East US"
 }
 
+variable "certificate_creator" {
+  type = "string"
+  default = ""
+}
+
 variable "resource_names" {
     type = "map"
     default = {
@@ -86,7 +91,6 @@ resource "azurerm_sql_database" "sql_database" {
   edition                         = "Standard"
   create_mode                     = "Default"
   requested_service_objective_name = "S0"
-  # tags                             = "${local.tags}"
 }
 
 
@@ -117,6 +121,13 @@ resource "azurerm_app_service" "web_3" {
   }
 }
 
+/*
+output "web_3_service_principle_id" {
+  value = "${azurerm_app_service.web_3.identity.0.principal_id}"
+}
+*/
+
+
 resource "azurerm_key_vault" "always_encrypted_sample" {
   name                            = "${azurerm_resource_group.always_encrypted_sample.*.name[0]}"
   resource_group_name             = "${var.resource_names["ResourceGroup"]}"
@@ -125,16 +136,20 @@ resource "azurerm_key_vault" "always_encrypted_sample" {
   sku {
     name = "standard"
   }
+
   access_policy {
     tenant_id = "${data.azurerm_client_config.current.tenant_id}"
-    object_id = "" # TODO: Make this a variable
+    object_id = "${var.certificate_creator}"
 
     certificate_permissions = [
-      "create", "get"
+      "create", "get" # Terraform needs get to make the cert, probably to check its existance
     ]
   }
 }
 
+output "key_vault_uri" {
+  value = "${azurerm_key_vault.always_encrypted_sample.vault_uri}"
+}
 
 resource "azurerm_key_vault_certificate" "column_certificate" {
   name     = "${var.resource_names["ColumnCertificate"]}"
@@ -186,8 +201,4 @@ resource "azurerm_key_vault_certificate" "column_certificate" {
       validity_in_months = 12
     }
   }
-}
-
-output "key_vault_uri" {
-  value = "${azurerm_key_vault.always_encrypted_sample.vault_uri}"
 }
