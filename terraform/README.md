@@ -13,8 +13,7 @@ All thise commands assume you are in the `/terraform/` folder in the git repo. T
 ```powershell
 az login
 az account set --subscription='SUBSCRIPTION_ID_I_WANT_TO_USE'
-# TODO: This line doesn't work and i need to fix
-$env:TF_VAR_certificate_creator  = $(az account show --query id -otsv)
+$env:TF_VAR_certificate_creator  = $(az ad signed-in-user show --query objectId --otsv)
 terraform init
 terraform plan
 terraform apply
