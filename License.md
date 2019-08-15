@@ -1,4 +1,4 @@
-# AlwaysEncryoted Sample Application
+# AlwaysEncryted Sample Application
 
 Copyright (c) 2015-2019 Justin Dearing <zippy1981@gmail.com>
 
