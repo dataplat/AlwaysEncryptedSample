@@ -12,6 +12,7 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 environment:
+  DOCFX_FOLDER: _site
   MSBUILD_LOG_VERSION: 2.0.94
   MSBUILD_LOG_FILE: msbuild.binlog
   NUGET_VERBOSITY: quiet
@@ -29,7 +30,7 @@ environment:
   SQL_SERVER_COLUMN_CERTIFICATE: AlwaysEncryptedSampleCMK
   matrix:
   - {}
-services: 
+services:
 - mssql2016
 nuget:
   # This might be causing a hang.
@@ -45,6 +46,7 @@ before_build:
 - ps: .\Invoke-EncryptColumns.ps1 -ConnectionString $env:SQL_SERVER_CONNECTION_STRING
 - cmd: nuget restore -Verbosity %NUGET_VERBOSITY%
 - cmd: nuget install MSBuild.StructuredLogger -Version %MSBUILD_LOG_VERSION%  -SolutionDirectory . -Verbosity %NUGET_VERBOSITY%
+- cmd: choco install docfx
 build:
   publish_nuget: true
   publish_nuget_symbols: true
@@ -53,6 +55,7 @@ build:
   parallel: true
   verbosity: minimal
 after_build:
+  - cmd: docfx
   - ps: .\appveyor\Start-EntityFrameworkMigration.ps1
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -d %SQL_SERVER_DATABASE% -W -i .\appveyor\schema_verification.sql -o %SQL_SERVER_VERIFICATION_LOG%
   - cmd: sqlcmd -S "%SQL_SERVER_INSTANCE%" -Q "BACKUP DATABASE [$(SQL_SERVER_DATABASE)] TO DISK='$(SQL_SERVER_BACKUP_FILE)' WITH FORMAT, COMPRESSION, STATS=10;"
@@ -60,6 +63,9 @@ after_build:
   - cmd: sqlpackage.exe /Action:Extract /TargetFile:"%SQL_SERVER_DACPAC%" /SourceServerName:"%SQL_SERVER_INSTANCE%" /SourceDatabaseName:%SQL_SERVER_DATABASE%
   - cmd: git status
 artifacts:
+  - path: $(DOCFX_FOLDER)
+    name: Documentation
+    type: Zip
   - path: $(SQL_SERVER_BACKUP_FILE)
     name: Database backup
     type: file

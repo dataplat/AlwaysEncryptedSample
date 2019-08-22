@@ -349,6 +349,15 @@ MigrationBackup/
 
 # End of https://www.gitignore.io/api/visualstudio
 
+# Created by https://www.gitignore.io/api/docfx
+# Edit at https://www.gitignore.io/?templates=docfx
+
+### DocFx ###
+.cache
+/**/_site/
+
+# End of https://www.gitignore.io/api/docfx
+
 #Docker stuff
 volumes/
 
