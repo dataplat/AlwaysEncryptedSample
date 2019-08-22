@@ -29,7 +29,7 @@ environment:
   SQL_SERVER_COLUMN_CERTIFICATE: AlwaysEncryptedSampleCMK
   matrix:
   - {}
-services: 
+services:
 - mssql2016
 nuget:
   # This might be causing a hang.
