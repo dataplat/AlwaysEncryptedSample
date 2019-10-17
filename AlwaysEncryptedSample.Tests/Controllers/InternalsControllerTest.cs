@@ -1,14 +1,14 @@
-﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using NUnit.Framework;
+using System.Web.Mvc;
 
 namespace AlwaysEncryptedSample.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class InternalsControllerTest
     {
         InternalsController controller = new InternalsController();
-        [Ignore]
-        [TestMethod]
+        [Ignore("Because")]
+        [Test]
         public void Index()
         {
             // Act
