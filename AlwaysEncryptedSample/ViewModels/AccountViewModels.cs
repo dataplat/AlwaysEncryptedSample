@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace AlwaysEncryptedSample.Models
+namespace AlwaysEncryptedSample.ViewModels
 {
     public class ExternalLoginConfirmationViewModel
     {
